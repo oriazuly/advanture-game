@@ -51,3 +51,7 @@ def isWalkable(map, row, col):
         if map[row][col] == tile:
             return False
     return True
+
+
+def jump(y):
+    return y - Constants.JUMP
