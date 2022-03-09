@@ -21,10 +21,13 @@ while run:
     clock.tick(FPS)
     keys = pygame.key.get_pressed()
     if keys[pygame.K_SPACE]:
-        y -= SPEED
+        y -= JUMP
         if not isWalkable(map, x, y):
-            y += SPEED
+            y += JUMP
     x += SPEED
+    while not isWalkable(map, x, y):
+        y -= GRAVITY
+        x += SPEED
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
