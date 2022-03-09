@@ -1,0 +1,22 @@
+import pygame.image
+
+SCREEN_WIDTH = 500
+SCREEN_HEIGHT = 500
+
+MAP_ROWS = 25
+MAP_COLS = 25
+
+SCALE = 20
+SPEED = 1
+FPS = 8
+
+CHARACTER_HEIGHT = 20
+CHARACTER_WIDTH = 20
+
+COLORS = {"B": pygame.image.load("Colors\\blue.png"),
+          "Y": pygame.image.load("Colors\\yellow.png"),
+          "R": pygame.image.load("Colors\\rust.png"),
+          "G": pygame.image.load("Colors\\green.png"),
+          "X": pygame.image.load("Colors\\brick_wall.png")}
+
+NOT_WALKABLE = ("X")
