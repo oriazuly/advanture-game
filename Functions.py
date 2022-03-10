@@ -53,5 +53,7 @@ def isWalkable(map, row, col):
     return True
 
 
-def jump(y):
-    return y - Constants.JUMP
+def updatePlace(screen, map, col, row):  # if the map not moving
+    tile = Constants.COLORS[map[row][col]]
+    pygame.transform.scale(tile, (20, 20))
+    screen.blit(tile, (row * Constants.SCALE, col * Constants.SCALE))

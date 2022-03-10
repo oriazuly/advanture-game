@@ -15,23 +15,34 @@ x = 1
 y = MAP_COLS - 2
 character = pygame.image.load("Character\\normal_pose.png")
 character = pygame.transform.scale(character, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
+jumping = False
+counter = 0
 run = True
 clock = pygame.time.Clock()
 while run:
     clock.tick(FPS)
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_SPACE]:
-        player_y = y - JUMP
-        if isWalkable(map, x, player_y):
-            y = jump(y)
-    if isWalkable(map, x + 1, y):
-        x += SPEED
-    if isWalkable(map, x, y + 1):
-        y += GRAVITY
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+        if event.type == pygame.K_SPACE:
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_SPACE]:
+        if isWalkable(map, x, y - JUMP) and not jumping:
+            jumping = True
+            counter = JUMP
+    if isWalkable(map, x + 1, y):
+        x += SPEED
+    if isWalkable(map, x, y + 1) and not jumping:
+        y += GRAVITY
+
+    if jumping and counter != 0:
+        y -= 1
+        counter -= 1
+    if counter == 0:
+        jumping = False
+
+
+
     draw_map(map, screen)
     screen.blit(character, (x * SCALE, y * SCALE))
     pygame.display.update()

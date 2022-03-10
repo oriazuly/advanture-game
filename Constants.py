@@ -3,12 +3,12 @@ import pygame.image
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 500
 
-MAP_ROWS = 100  # 50
+MAP_ROWS = 50  # 50
 MAP_COLS = 25
 
 SCALE = 20
 SPEED = 1
-FPS = 7
+FPS = 4
 
 JUMP = 6
 GRAVITY = 1
