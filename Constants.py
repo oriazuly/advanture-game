@@ -3,7 +3,7 @@ import pygame.image
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 500
 
-MAP_ROWS = 50
+MAP_ROWS = 100  # 50
 MAP_COLS = 25
 
 SCALE = 20
