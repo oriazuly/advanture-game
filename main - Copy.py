@@ -13,6 +13,7 @@ write_map("map.txt", MAP_ROWS, MAP_COLS)
 
 x = 1
 y = MAP_COLS - 2
+draw_map(map, screen)
 character = pygame.image.load("Character\\normal_pose.png")
 character = pygame.transform.scale(character, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
 jumping = False
@@ -30,10 +31,12 @@ while run:
         x += SPEED
     if isWalkable(map, x, y + 1) and not jumping:
         y += GRAVITY
+        updatePlace(screen, map, y - GRAVITY, x - SPEED)
 
     if jumping and counter != 0:
         y -= 1
         counter -= 1
+        updatePlace(screen, map, y + 1, x - SPEED)
     if counter == 0:
         jumping = False
 
@@ -41,7 +44,7 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-    draw_map(map, screen)
+    updatePlace(screen, map, y, x - 1)
     screen.blit(character, (x * SCALE, y * SCALE))
     pygame.display.update()
 pygame.quit()
