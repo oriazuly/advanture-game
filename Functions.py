@@ -1,7 +1,7 @@
 import pygame.transform
 import Constants
-from CollideTile import CollideTile
-from BasicTile import BasicTile
+from CollideTile import *
+from BasicTile import *
 import random  # random.randint(1, 10)
 
 
@@ -19,16 +19,19 @@ def generate_map(rows, cols):
 
 
 def generate_tiles(map):
-    for row in map:
-        for col in map[row]:
+    tiles = []
+    for row in range(Constants.MAP_ROWS):
+        new_line = []
+        for col in range(Constants.MAP_COLS):
             for color in Constants.BASIC_COLORS:
                 if map[row][col] == color:
-                    BasicTile(color, row, col)
+                    new_line.append(BasicTile(Constants.BASIC_COLORS[color], row, col))
 
             for color in Constants.COLLIDER_COLORS:
                 if map[row][col] == color:
-                    CollideTile(color, row, col)
-
+                    new_line.append(CollideTile(Constants.COLLIDER_COLORS[color], row, col))
+        tiles.append(new_line)
+    return tiles
 
 
 def write_map(map_name, rows, cols):
@@ -53,19 +56,16 @@ def print_map(map):
         print()
 
 
-def draw_map(map, screen):
-    for row in range(len(map)):
-        for col in range(len(map[row])):
-            tile = Constants.ALL_COLORS[map[row][col]]
-            pygame.transform.scale(tile, (20, 20))
-            screen.blit(tile, (row * Constants.SCALE, col * Constants.SCALE))
+def draw_map(tiles, screen):
+    for row in range(MAP_ROWS):
+        for col in range(MAP_COLS):
+            tile = tiles[row][col]
+            pygame.transform.scale(tile.getColor(), (20, 20))
+            screen.blit(tile.getColor(), (tile.getX() * Constants.SCALE, tile.getY() * Constants.SCALE))
 
 
-def isWalkable(map, row, col):
-    for tile in Constants.NOT_WALKABLE:
-        if map[row][col] == tile:
-            return False
-    return True
+def isWalkable(tiles, row, col):
+    return tiles[row][col].isWalkable()
 
 
 def updatePlace(screen, map, col, row):  # if the map not moving

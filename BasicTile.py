@@ -1,7 +1,6 @@
 import pygame
 from Constants import *
 from Functions import *
-from main import screen
 from Tile import Tile
 
 
