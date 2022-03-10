@@ -1,5 +1,7 @@
 import pygame.transform
 import Constants
+from BasicTile import BasicTile
+from CollideTile import CollideTile
 from CollideTile import *
 from BasicTile import *
 import random  # random.randint(1, 10)
@@ -13,7 +15,10 @@ def generate_map(rows, cols):
             if row == 0 or row == rows - 1 or col == 0 or col == cols - 1:
                 new_line.append("X")
             else:
-                new_line.append("G")
+                if random.randint(1, 10) > 5:
+                    new_line.append("CABB")
+                elif:
+
         map.append(new_line)
     return map
 

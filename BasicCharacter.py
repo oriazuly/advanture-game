@@ -23,7 +23,13 @@ class BasicCharacter(Character):
                 jumping = False
 
         if isWalkable(tiles, self.x + 1, self.y):  # make the character keep moving forward
-            self.x += SPEED
+            if self.x > CAMERA_X_START:
+                for row in range(MAP_ROWS):
+                    for col in range(MAP_COLS):
+                        destination = tiles[row][col].getX() - SPEED
+                        tiles[row][col].setX(destination)
+            if self.x <= CAMERA_X_START:
+                self.x += SPEED
 
         if isWalkable(tiles, self.x, self.y + 1) and not jumping:  # make the character fall to the ground
             self.y += GRAVITY

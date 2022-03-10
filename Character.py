@@ -3,7 +3,7 @@ from Constants import *
 from Functions import *
 
 
-class Character:
+class Character():
     def __init__(self, img_src, x, y):
         self.img_src = img_src
         self.x = x

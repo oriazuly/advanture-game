@@ -1,9 +1,10 @@
+import pygame as pygame
 import pygame.image
 
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 500
 
-MAP_ROWS = 50  # 50
+MAP_ROWS = 1000  # 50
 MAP_COLS = 25
 ALL_TILES = MAP_COLS * MAP_ROWS
 
@@ -20,15 +21,30 @@ Y_POSITION = MAP_COLS - 2
 CHARACTER_HEIGHT = 20
 CHARACTER_WIDTH = 20
 
+# Camera:
+CAMERA_X_START = (MAP_COLS - 2) // 2
+
 ALL_COLORS = {"B": pygame.image.load("Colors\\blue.png"),
               "Y": pygame.image.load("Colors\\yellow.png"),
               "R": pygame.image.load("Colors\\rust.png"),
               "G": pygame.image.load("Colors\\green.png"),
-              "X": pygame.image.load("Colors\\brick_wall.png")}
+              "X": pygame.image.load("Colors\\brick_wall.png"),
+              "MCABB": pygame.image.load("Colors\\cabblestone_block.png"),
+              "COLE": pygame.image.load("Colors\\cole_block.png"),
+              "GRASS": pygame.image.load("Colors\\grass_block.png"),
+              "IRON": pygame.image.load("Colors\\iron_block.png"),
+              "MOISTY": pygame.image.load("Colors\\moisty_block.png"),
+              "TNT": pygame.image.load("Colors\\tnt_block.png")}
 
 BASIC_COLORS = {"B": pygame.image.load("Colors\\blue.png"),
                 "Y": pygame.image.load("Colors\\yellow.png"),
                 "R": pygame.image.load("Colors\\rust.png"),
-                "G": pygame.image.load("Colors\\green.png")}
+                "G": pygame.image.load("Colors\\green.png"),
+                "CABB": pygame.image.load("Colors\\cabblestone_block.png"),
+                "COLE": pygame.image.load("Colors\\cole_block.png"),
+                "GRASS": pygame.image.load("Colors\\grass_block.png"),
+                "IRON": pygame.image.load("Colors\\iron_block.png"),
+                "MOISTY": pygame.image.load("Colors\\moisty_block.png"),
+                "TNT": pygame.image.load("Colors\\tnt_block.png")}
 
 COLLIDER_COLORS = {"X": pygame.image.load("Colors\\brick_wall.png")}
