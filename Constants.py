@@ -10,7 +10,7 @@ ALL_TILES = MAP_COLS * MAP_ROWS
 
 SCALE = 20
 SPEED = 1
-FPS = 10
+FPS = 60
 
 # BasicCharacter:
 JUMP = 6
@@ -22,7 +22,7 @@ CHARACTER_HEIGHT = 20
 CHARACTER_WIDTH = 20
 
 # Camera:
-CAMERA_X_START = (MAP_COLS - 2) // 2
+CAMERA_X_START = MAP_COLS // 1.8
 
 ALL_COLORS = {"B": pygame.image.load("Colors\\blue.png"),
               "Y": pygame.image.load("Colors\\yellow.png"),

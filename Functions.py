@@ -15,9 +15,15 @@ def generate_map(rows, cols):
             if row == 0 or row == rows - 1 or col == 0 or col == cols - 1:
                 new_line.append("X")
             else:
-                if random.randint(1, 10) > 5:
+                random_value = random.randint(1, 100)
+                if random_value < 95:
                     new_line.append("CABB")
-                elif:
+                elif 95 < random_value < 97:
+                    new_line.append("COLE")
+                elif 97 < random_value < 99:
+                    new_line.append("IRON")
+                else:
+                    new_line.append("MOISTY")
 
         map.append(new_line)
     return map
