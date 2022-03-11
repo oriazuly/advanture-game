@@ -7,6 +7,7 @@ from BasicCharacter import *
 pygame.init()
 screen_size = (SCREEN_WIDTH, SCREEN_HEIGHT)
 screen = pygame.display.set_mode(screen_size)
+pygame.display.set_caption("Adventure_game")
 pygame.display.flip()
 
 map = generate_map(MAP_ROWS, MAP_COLS)

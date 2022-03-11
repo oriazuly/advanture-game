@@ -75,6 +75,12 @@ def draw_map(tiles, screen):
             screen.blit(tile.getImgSrc(), (tile.getX() * Constants.SCALE, tile.getY() * Constants.SCALE))
 
 
+def generate_inventory(map, screen):
+    for row in range(INVENTORY_AREA):
+        for col in range(INVENTORY_AREA):
+
+
+
 def isWalkable(tiles, row, col):
     return tiles[row][col].isWalkable()
 
