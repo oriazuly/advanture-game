@@ -5,16 +5,16 @@ from Tile import Tile
 
 
 class BasicTile(Tile):
-    def __init__(self, color, x, y):
+    def __init__(self, img_src, x, y):
         super().__init__(x, y)
-        self.color = color
-        self.color = pygame.transform.scale(self.color, (20, 20))
+        self.img_src = img_src
+        self.img_src = pygame.transform.scale(self.img_src, (SCALE, SCALE))
 
     def isWalkable(self):
         return True
 
-    def getColor(self):
-        return self.color
+    def getImgSrc(self):
+        return self.img_src
 
-    def setColor(self, color):
-        self.color = color
+    def setImgSrc(self, img_src):
+        self.img_src = img_src

@@ -5,8 +5,8 @@ from BasicTile import BasicTile
 
 
 class CollideTile(BasicTile):
-    def __init__(self, color, x, y):
-        super().__init__(color, x, y)
+    def __init__(self, img_src, x, y):
+        super().__init__(img_src, x, y)
 
     def isWalkable(self):
         return False

@@ -71,8 +71,8 @@ def draw_map(tiles, screen):
     for row in range(MAP_ROWS):
         for col in range(MAP_COLS):
             tile = tiles[row][col]
-            pygame.transform.scale(tile.getColor(), (20, 20))
-            screen.blit(tile.getColor(), (tile.getX() * Constants.SCALE, tile.getY() * Constants.SCALE))
+            pygame.transform.scale(tile.getImgSrc(), (SCALE, SCALE))
+            screen.blit(tile.getImgSrc(), (tile.getX() * Constants.SCALE, tile.getY() * Constants.SCALE))
 
 
 def isWalkable(tiles, row, col):
