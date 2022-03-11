@@ -8,7 +8,7 @@ class BasicCharacter(Character):
     def __init__(self, img_src, x, y):
         super().__init__(img_src, x, y)
 
-    def movement(self, map, tiles, jumping, jump_counter, falling):
+    def movement(self, map, tiles, camera_end, jumping, jump_counter, falling):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
             if isWalkable(tiles, self.x, self.y - JUMP) and not jumping:  # start the jump
@@ -24,10 +24,15 @@ class BasicCharacter(Character):
 
         if isWalkable(tiles, self.x + 1, self.y):  # make the character keep moving forward
             if self.x > CAMERA_X_START:
-                for row in range(MAP_ROWS):
-                    for col in range(MAP_COLS):
-                        destination = tiles[row][col].getX() - SPEED
-                        tiles[row][col].setX(destination)
+                camera_end -= 1
+                if camera_end < 0:  # check if the map get out of lines
+                    if self.x < MAP_ROWS - CAMERA_X_END - 2:  # stop the player at the end
+                        self.x += SPEED
+                else:
+                    for row in range(MAP_ROWS):
+                        for col in range(MAP_COLS):
+                            destination = tiles[row][col].getX() - SPEED
+                            tiles[row][col].setX(destination)
             if self.x <= CAMERA_X_START:
                 self.x += SPEED
 
@@ -38,4 +43,4 @@ class BasicCharacter(Character):
         if not isWalkable(tiles, self.x, self.y + 1):
             falling = False
 
-        return jumping, jump_counter, falling
+        return camera_end, jumping, jump_counter, falling

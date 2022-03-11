@@ -4,13 +4,13 @@ import pygame.image
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 500
 
-MAP_ROWS = 1000  # 50
+MAP_ROWS = 100  # 50
 MAP_COLS = 25
 ALL_TILES = MAP_COLS * MAP_ROWS
 
 SCALE = 20
 SPEED = 1
-FPS = 60
+FPS = 10
 
 # BasicCharacter:
 JUMP = 6
@@ -22,7 +22,8 @@ CHARACTER_HEIGHT = 20
 CHARACTER_WIDTH = 20
 
 # Camera:
-CAMERA_X_START = MAP_COLS // 1.8
+CAMERA_X_START = ((SCREEN_WIDTH - 2) // SCALE) // 4
+CAMERA_X_END = SCREEN_WIDTH // SCALE
 
 ALL_COLORS = {"B": pygame.image.load("Colors\\blue.png"),
               "Y": pygame.image.load("Colors\\yellow.png"),

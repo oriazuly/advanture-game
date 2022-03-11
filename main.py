@@ -22,11 +22,12 @@ character = BasicCharacter(character_src, X_POSITION, Y_POSITION)
 jumping = False
 jump_counter = 0
 falling = False
+camera_end = CAMERA_X_END
 run = True
 clock = pygame.time.Clock()
 while run:
     clock.tick(FPS)
-    jumping, jump_counter, falling = character.movement(map, tiles, jumping, jump_counter, falling)
+    camera_end, jumping, jump_counter, falling = character.movement(map, tiles, camera_end, jumping, jump_counter, falling)
 
     for event in pygame.event.get():  # close pygame
         if event.type == pygame.QUIT:
