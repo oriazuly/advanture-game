@@ -4,12 +4,20 @@ from Functions import *
 
 
 class Tile:
-    def __init__(self, x, y):
+    def __init__(self, img_src, x, y):
+        self.img_src = img_src
+        self.img_src = pygame.transform.scale(self.img_src, (SCALE, SCALE))
         self.x = x
         self.y = y
 
     def isWalkable(self):
         pass
+
+    def getImgSrc(self):
+        return self.img_src
+
+    def setImgSrc(self, img_src):
+        self.img_src = img_src
 
     def getX(self):
         return self.x
