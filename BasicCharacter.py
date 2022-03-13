@@ -4,7 +4,7 @@ from Functions import *
 from Character import Character
 
 
-class BasicCharacter(Character):
+class BasicCharacter(Character):  # normal walkable character
     def __init__(self, img_src, x, y):
         super().__init__(img_src, x, y)
 

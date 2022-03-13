@@ -4,7 +4,7 @@ from Functions import *
 from Tile import Tile
 
 
-class BasicTile(Tile):
+class BasicTile(Tile):  # background tile, don't do much but that
     def __init__(self, img_src, x, y):
         super().__init__(img_src, x, y)
 

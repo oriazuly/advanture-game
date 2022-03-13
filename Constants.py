@@ -1,17 +1,20 @@
 import pygame as pygame
 import pygame.image
 
+# Screen:
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 500
 
+# Map:
 MAP_ROWS = 250  # normal: 250
 MAP_COLS = 25  # normal: 25
-ALL_TILES = MAP_COLS * MAP_ROWS
 
+# Inventory:
 INVENTORY_AREA = 20
 INVENTORY_SCALE = 60
 INVENTORY_ITEM_SCALE = 40
 
+# Other:
 SCALE = 20
 SPEED = 1
 FPS = 10
@@ -29,6 +32,7 @@ CHARACTER_WIDTH = 20
 CAMERA_X_START = ((SCREEN_WIDTH - 2) // SCALE) // 3
 CAMERA_X_END = MAP_ROWS - SCREEN_WIDTH // SCALE
 
+# Tiles:
 ALL_COLORS = {"B": pygame.image.load("Colors\\blue.png"),
               "Y": pygame.image.load("Colors\\yellow.png"),
               "R": pygame.image.load("Colors\\rust.png"),
