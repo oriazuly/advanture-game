@@ -20,7 +20,7 @@ SPEED = 1
 FPS = 10
 
 # BasicCharacter:
-JUMP = 6
+JUMP = 6  # 6 normal
 GRAVITY = 1
 X_POSITION = 1
 Y_POSITION = MAP_COLS - 2

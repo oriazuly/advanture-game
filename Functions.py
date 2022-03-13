@@ -52,7 +52,7 @@ def write_map(map_name, rows, cols):  # create a basic editable text file with a
             if row == 0 or row == rows - 1 or col == 0 or col == cols - 1:
                 f.write("X ")
             else:
-                f.write("G ")
+                f.write("Y ")
         f.write("\n")
     f.close()  # write_map("map.txt", MAP_ROWS, MAP_COLS)
 
