@@ -13,6 +13,9 @@ class Tile:
     def isWalkable(self):
         pass
 
+    def isKillable(self):
+        pass
+
     def getImgSrc(self):
         return self.img_src
 

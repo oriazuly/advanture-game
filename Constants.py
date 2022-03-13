@@ -4,8 +4,8 @@ import pygame.image
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 500
 
-MAP_ROWS = 100  # 50
-MAP_COLS = 25
+MAP_ROWS = 250  # normal: 250
+MAP_COLS = 25  # normal: 25
 ALL_TILES = MAP_COLS * MAP_ROWS
 
 INVENTORY_AREA = 20
@@ -27,7 +27,7 @@ CHARACTER_WIDTH = 20
 
 # Camera:
 CAMERA_X_START = ((SCREEN_WIDTH - 2) // SCALE) // 3
-CAMERA_X_END = SCREEN_WIDTH // SCALE
+CAMERA_X_END = MAP_ROWS - SCREEN_WIDTH // SCALE
 
 ALL_COLORS = {"B": pygame.image.load("Colors\\blue.png"),
               "Y": pygame.image.load("Colors\\yellow.png"),

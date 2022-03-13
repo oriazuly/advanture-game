@@ -25,15 +25,15 @@ class BasicCharacter(Character):
         if isWalkable(tiles, self.x + 1, self.y):  # make the character keep moving forward
             if self.x > CAMERA_X_START:
                 camera_end -= 1
-                if camera_end < 0:  # check if the map get out of lines
+                if camera_end < 0:  # check if the map get out of the screen
                     if self.x < MAP_ROWS - CAMERA_X_END - 2:  # stop the player at the end
                         self.x += SPEED
                 else:
                     for row in range(MAP_ROWS):
                         for col in range(MAP_COLS):
-                            destination = tiles[row][col].getX() - SPEED
+                            destination = tiles[row][col].getX() - SPEED  # make the tiles change location
                             tiles[row][col].setX(destination)
-            if self.x <= CAMERA_X_START:
+            if self.x <= CAMERA_X_START:  # make the character move in the start to selected destination
                 self.x += SPEED
 
         if isWalkable(tiles, self.x, self.y + 1) and not jumping:  # make the character fall to the ground

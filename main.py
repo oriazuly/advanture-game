@@ -11,10 +11,10 @@ pygame.display.set_caption("Adventure_game")
 pygame.display.flip()
 
 map = generate_map(MAP_ROWS, MAP_COLS)
+map = read_map()
 tiles = generate_tiles(map)
 # print_map(map)
 draw_map(tiles, screen)
-write_map("map.txt", MAP_ROWS, MAP_COLS)
 
 character_src = pygame.image.load("Character\\normal_pose.png")
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))

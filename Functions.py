@@ -7,7 +7,7 @@ from BasicTile import *
 import random  # random.randint(1, 10)
 
 
-def generate_map(rows, cols):
+def generate_map(rows, cols):  # auto create normal unchangeable map
     map = []
     for row in range(rows):
         new_line = []
@@ -29,7 +29,7 @@ def generate_map(rows, cols):
     return map
 
 
-def generate_tiles(map):
+def generate_tiles(map):  # create the tiles based of the map
     tiles = []
     for row in range(Constants.MAP_ROWS):
         new_line = []
@@ -45,7 +45,7 @@ def generate_tiles(map):
     return tiles
 
 
-def write_map(map_name, rows, cols):
+def write_map(map_name, rows, cols):  # write_map("map.txt", MAP_ROWS, MAP_COLS)
     f = open(map_name, "w")
     for row in range(rows):
         for col in range(cols):
@@ -54,20 +54,27 @@ def write_map(map_name, rows, cols):
             else:
                 f.write("G ")
         f.write("\n")
+    f.close()
 
 
-def read_map():
-    pass
+def read_map():  # read the .txt map and return it
+    world = []
+    f = open("map.txt", "r")
+    for line in f:
+        line = line.replace("\n", "")
+        world.append(line.split(" "))
+    f.close()
+    return world
 
 
-def print_map(map):
+def print_map(map):  # print the map
     for row in range(len(map)):
         for col in range(len(map[row])):
             print(map[row][col], end=", ")
         print()
 
 
-def draw_map(tiles, screen):
+def draw_map(tiles, screen):  # make the tiles list (based map) apper on the screen
     for row in range(MAP_ROWS):
         for col in range(MAP_COLS):
             tile = tiles[row][col]
@@ -76,12 +83,10 @@ def draw_map(tiles, screen):
 
 
 def generate_inventory(map, screen):
-    for row in range(INVENTORY_AREA):
-        for col in range(INVENTORY_AREA):
+    pass
 
 
-
-def isWalkable(tiles, row, col):
+def isWalkable(tiles, row, col):  # is possible to move through the tile
     return tiles[row][col].isWalkable()
 
 
