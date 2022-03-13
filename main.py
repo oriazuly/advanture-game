@@ -16,7 +16,7 @@ tiles = generate_tiles(map)
 # print_map(map)
 draw_map(tiles, screen)
 
-character_src = pygame.image.load("Character\\normal_pose.png")
+character_src = pygame.image.load("Character\\miner.png")
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
 character = BasicCharacter(character_src, X_POSITION, Y_POSITION)
 
