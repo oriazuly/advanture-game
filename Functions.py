@@ -45,7 +45,7 @@ def generate_tiles(map):  # create the tiles based of the map
     return tiles
 
 
-def write_map(map_name, rows, cols):  # write_map("map.txt", MAP_ROWS, MAP_COLS)
+def write_map(map_name, rows, cols):  # create a basic editable text file with a basic map
     f = open(map_name, "w")
     for row in range(rows):
         for col in range(cols):
@@ -54,7 +54,7 @@ def write_map(map_name, rows, cols):  # write_map("map.txt", MAP_ROWS, MAP_COLS)
             else:
                 f.write("G ")
         f.write("\n")
-    f.close()
+    f.close()  # write_map("map.txt", MAP_ROWS, MAP_COLS)
 
 
 def read_map():  # read the .txt map and return it
@@ -88,6 +88,10 @@ def generate_inventory(map, screen):
 
 def isWalkable(tiles, row, col):  # is possible to move through the tile
     return tiles[row][col].isWalkable()
+
+
+def isKillable(tiles, row, col):  # is touch this tile will kill you
+    return tiles[row][col].isKillable()
 
 
 def updatePlace(screen, map, col, row):  # if the map not moving

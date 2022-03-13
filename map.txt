@@ -1,6 +1,4 @@
 X X X X X X X X X X X X X X X X X X X X X X X X X 
-X R G G G G G G G G G G G G G G G G G G G G G Y X
-X G G G G G G G G G G G G G G G G G G G G G G Y X
 X G G G G G G G G G G G G G G G G G G G G G G G X 
 X G G G G G G G G G G G G G G G G G G G G G G G X 
 X G G G G G G G G G G G G G G G G G G G G G G G X 
@@ -8,7 +6,9 @@ X G G G G G G G G G G G G G G G G G G G G G G G X
 X G G G G G G G G G G G G G G G G G G G G G G G X 
 X G G G G G G G G G G G G G G G G G G G G G G G X 
 X G G G G G G G G G G G G G G G G G G G G G G G X 
-X G X X X X X X X X X X X X X X X X X X X X X G X
+X G G G G G G G G G G G G G G G G G G G G G G G X 
+X G G G G G G G G G G G G G G G G G G G G G G G X 
+X G G G G G G G G G G G G G G G G G G G G G G G X 
 X G G G G G G G G G G G G G G G G G G G G G G G X 
 X G G G G G G G G G G G G G G G G G G G G G G G X 
 X G G G G G G G G G G G G G G G G G G G G G G G X 
