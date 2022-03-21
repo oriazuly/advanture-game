@@ -43,7 +43,9 @@ ALL_COLORS = {"B": pygame.image.load("Colors\\blue.png"),
               "GRASS": pygame.image.load("Colors\\grass_block.png"),
               "IRON": pygame.image.load("Colors\\iron_block.png"),
               "MOISTY": pygame.image.load("Colors\\moisty_block.png"),
-              "TNT": pygame.image.load("Colors\\tnt_block.png")}
+              "TNT": pygame.image.load("Colors\\tnt_block.png"),
+              "N": pygame.image.load("Cave_colors\\normal.png"),
+              "T": pygame.image.load("Cave_colors\\top.png")}
 
 BASIC_COLORS = {"B": pygame.image.load("Colors\\blue.png"),
                 "Y": pygame.image.load("Colors\\yellow.png"),
@@ -55,5 +57,8 @@ BASIC_COLORS = {"B": pygame.image.load("Colors\\blue.png"),
                 "IRON": pygame.image.load("Colors\\iron_block.png"),
                 "MOISTY": pygame.image.load("Colors\\moisty_block.png"),
                 "TNT": pygame.image.load("Colors\\tnt_block.png")}
+
+CAVE_COLORS = {"N": pygame.image.load("Cave_colors\\normal.png"),
+               "T": pygame.image.load("Cave_colors\\top.png")}
 
 COLLIDER_COLORS = {"X": pygame.image.load("Colors\\brick_wall.png")}
