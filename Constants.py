@@ -17,10 +17,10 @@ INVENTORY_ITEM_SCALE = 40
 # Other:
 SCALE = 20
 SPEED = 1
-FPS = 10
+FPS = 10  # normal: 10
 
 # BasicCharacter:
-JUMP = 6  # 6 normal
+JUMP = 6  # normal: 6
 GRAVITY = 1
 X_POSITION = 1
 Y_POSITION = MAP_COLS - 2
