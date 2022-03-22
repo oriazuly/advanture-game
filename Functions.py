@@ -51,8 +51,12 @@ def write_map(map_name, rows, cols):  # create a basic editable text file with a
         for col in range(cols):
             if row == 0 or row == rows - 1 or col == 0 or col == cols - 1:
                 f.write("X ")
+            # elif col < 6:
+            #     f.write("T ")
+            # elif col < 8:
+            #     f.write("B ")
             else:
-                f.write("Y ")
+                f.write("W ")
         f.write("\n")
     f.close()  # write_map("map.txt", MAP_ROWS, MAP_COLS)
 
