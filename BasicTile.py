@@ -2,6 +2,7 @@ import pygame
 from Constants import *
 from Functions import *
 from Tile import Tile
+from CollideTile import CollideTile
 
 
 class BasicTile(Tile):  # background tile, don't do much but that

@@ -91,11 +91,21 @@ def generate_inventory(map, screen):
 
 
 def isWalkable(tiles, row, col):  # is possible to move through the tile
-    return tiles[row][col].isWalkable()
+    return tiles[row][col].isWalkable() and 0 < row < MAP_ROWS and 0 < col < MAP_COLS
 
 
 def isKillable(tiles, row, col):  # is touch this tile will kill you
     return tiles[row][col].isKillable()
+
+
+def print_tiles(tiles):
+    for row in range(len(tiles)):
+        for col in range(len(tiles[row])):
+            if type(tiles[row][col]) == CollideTile:
+                print("c", end="")
+            else:
+                print("b", end="")
+        print()
 
 
 def updatePlace(screen, map, col, row):  # if the map not moving

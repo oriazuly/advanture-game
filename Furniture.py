@@ -26,11 +26,12 @@ def create_chandelier(tiles, body_color, light_color, row, col):
 
 def create_desk(tiles, height, width, body_color, row, col):
     for floor in range(height):
-        tiles[row][col - floor] = CollideTile(ALL_COLORS[body_color], row, col - floor)
-        tiles[row + width][col - floor] = CollideTile(ALL_COLORS[body_color], row + width, col - floor)
+        tiles[row][col - floor] = CollideTile(ALL_COLORS[body_color], tiles[row][col - floor].getX(), tiles[row][col - floor].getY())
+        tiles[row + width][col - floor] = CollideTile(ALL_COLORS[body_color], tiles[row + width][col - floor].getX(), tiles[row + width][col - floor].getY())
 
     for block in range(width + 1):
-        tiles[row + block][col - height] = CollideTile(ALL_COLORS[body_color], row + block, col - height)
+        tiles[row + block][col - height] = CollideTile(ALL_COLORS[body_color], tiles[row + block][col - height].getX(), tiles[row + block][col - height].getY())
+
 
 
 

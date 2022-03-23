@@ -7,6 +7,8 @@ from Character import Character
 class BasicCharacter(Character):  # normal walkable character
     def __init__(self, img_src, x, y):
         super().__init__(img_src, x, y)
+        self.actualX = x
+        self.actualY = y
 
     def movement(self, map, tiles, camera_end, jumping, jump_counter, falling):
         keys = pygame.key.get_pressed()
@@ -45,4 +47,5 @@ class BasicCharacter(Character):  # normal walkable character
         if not isWalkable(tiles, self.x, self.y + 1):  # turn off the fall system when touched the ground
             falling = False
 
+        self.actualX += SPEED
         return camera_end, jumping, jump_counter, falling
