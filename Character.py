@@ -8,6 +8,7 @@ class Character:
         self.img_src = img_src
         self.x = x
         self.y = y
+        self.camera_pos = 0
 
     def movement(self):
         pass
