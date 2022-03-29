@@ -17,7 +17,7 @@ class Character:
         return self.img_src
 
     def getX(self):
-        return self.x
+        return self.actualX
 
     def getY(self):
         return self.y

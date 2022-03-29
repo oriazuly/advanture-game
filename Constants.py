@@ -18,7 +18,7 @@ INVENTORY_ITEM_SCALE = 40
 
 # Other:
 SCALE = 20
-SPEED = 1
+SPEED = 3
 FPS = 12  # normal: 10
 
 # BasicCharacter:

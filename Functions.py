@@ -78,12 +78,13 @@ def print_map(map):  # print the map
         print()
 
 
-def draw_map(tiles, screen, camera):  # make the tiles list (based map) apper on the screen
+def draw_map(tiles, screen, camera_origin):  # make the tiles list (based map) apper on the screen
     for row in range(MAP_ROWS):
         for col in range(MAP_COLS):
             tile = tiles[row][col]
             pygame.transform.scale(tile.getImgSrc(), (SCALE, SCALE))
-            screen.blit(tile.getImgSrc(), (tile.getX() * Constants.SCALE + (camera + Constants.SCALE), tile.getY() * Constants.SCALE))
+            camera_x, camera_y = camera_origin
+            screen.blit(tile.getImgSrc(), (tile.getX() * Constants.SCALE - camera_x, tile.getY() * Constants.SCALE - camera_y))
 
 
 def generate_inventory(map, screen):

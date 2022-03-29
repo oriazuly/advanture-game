@@ -1,10 +1,7 @@
 import pygame
-
-import Constants
 from Constants import *
 from Functions import *
 from Character import Character
-from math import ceil
 
 
 class BasicCharacter(Character):  # normal walkable character
@@ -13,35 +10,49 @@ class BasicCharacter(Character):  # normal walkable character
         self.actualX = x
         self.actualY = y
 
-    def movement(self, tiles, world):
-        if isWalkable(tiles, self.x, self.y + 1):
-            self.x += SPEED
+    def movement(self, map, tiles, camera_end, jumping, jump_counter, falling):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_SPACE]:
+            if isWalkable(tiles, self.x, self.y - JUMP) and not jumping:  # start the jump and avoid double jump
+                jumping = True
+                jump_counter = JUMP
 
-    def jump(self, tiles):
-        if isWalkable(tiles, self.x, self.y - 1) and not isWalkable(tiles, self.x, self.y + 1):
-            self.y -= SPEED
-        elif isWalkable(tiles, self.x, self.y + 1):
+        if jumping and jump_counter != 0 and not falling:  # while jumping
+            self.y -= 1
+            jump_counter -= 1
+        else:  # no longer jumping
+            if jump_counter == 0 or falling:
+                jumping = False
+                jump_counter = 0
+
+        # if isWalkable(tiles, self.x + 1, self.y):  # make the character keep moving forward
+        #     if self.x > CAMERA_X_START:
+        #         camera_end -= 1
+        #         if camera_end < 0:  # check if the map get out of the screen
+        #             if self.x < MAP_ROWS - CAMERA_X_END - 2:  # stop the player at the end
+        #                 self.x += SPEED
+        #         else:
+        #             for row in range(MAP_ROWS):
+        #                 for col in range(MAP_COLS):
+        #                     destination = tiles[row][col].getX() - SPEED  # make the tiles change location
+        #                     tiles[row][col].setX(destination)
+        #     if self.x <= CAMERA_X_START:  # make the character move in the start to selected destination
+        #         self.x += SPEED
+
+        if isWalkable(tiles, self.actualX, self.y + 1) and not jumping:  # make the character fall to the ground
             self.y += GRAVITY
+            jump_counter = 0
+            falling = True
 
+        if not isWalkable(tiles, self.actualX, self.y + 1):  # turn off the fall system when touched the ground
+            falling = False
 
-
-
-    def camera(self, world):
-        # CAMERA_X_END
-        max_camera_x = int(len(world) - (Constants.SCREEN_WIDTH / Constants.SCALE))
-        # camera end
-        camera_x = self.x - ceil(round(Constants.SCREEN_WIDTH / Constants.SCALE / 2))
-
-        # if max_camera_y >= camera_y >= 0:
-        #     self.camera_pos[1] = camera_y
-        # if camera_y < 0:
-        #     self.camera_pos[1] = 0
-        # else:
-        #     self.camera_pos[1] = max_camera_y
-
-        if max_camera_x >= camera_x >= 0:
-            self.camera_pos -= SPEED * SCALE
-        elif camera_x < 0:
-            self.camera_pos = 0
+        # make the character move forward
+        for x in range(self.actualX + 1, self.actualX + 1 + SPEED):
+            if not isWalkable(tiles, x, self.y):
+                self.actualX = x - 1
+                break
         else:
-            self.camera_pos = max_camera_x
+            self.actualX += SPEED
+        
+        return camera_end, jumping, jump_counter, falling
