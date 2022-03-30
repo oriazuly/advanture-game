@@ -9,7 +9,7 @@ class ObstacleTile(Tile):  # tile who will kill the character if touched
         super().__init__(img_src, x, y)
 
     def isWalkable(self):
-        return False
+        return True
 
     def isKillable(self):
         return True

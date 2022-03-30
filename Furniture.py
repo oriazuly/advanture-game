@@ -1,5 +1,6 @@
 from CollideTile import CollideTile
 from Constants import *
+from random import randint
 
 
 def create_chandeliers(amount, space, tiles, body_color, light_color, row, col):
@@ -40,23 +41,20 @@ def create_desk(tiles, height, width, body_color, row, col):
         tiles[row + block][col - height] = CollideTile(ALL_COLORS[body_color], tiles[row + block][col - height].getX(), tiles[row + block][col - height].getY())
 
 
+def create_shelves(distance, tiles, length, body_color, row, col):
+    for shelf in range(MAP_ROWS // (length + distance)):
+        random = randint(-SHELF_HEIGHT_DIFF, SHELF_HEIGHT_DIFF)
+        create_shelf(tiles, length, body_color, row + distance * shelf, col + random)
 
 
+def create_shelf(tiles, length, body_color, row, col):
+    for block in range(length + 1):
+        tiles[row + block][col] = CollideTile(ALL_COLORS[body_color], tiles[row + block][col].getX(), tiles[row + block][col].getY())
 
-
-
-
-
-
-
-#  def create_desk(tiles, height, width, body_color, row, col):
+# def create_border(tiles, height, width, body_color, row, col):
 #     for floor in range(height):
-#         tiles[row][col - floor] = CollideTile(ALL_COLORS[body_color], tiles[row][col - floor].getX(), tiles[row][col - floor].getY())
-#         tiles[row + width][col - floor] = CollideTile(ALL_COLORS[body_color], tiles[row + width][col - floor].getX(), tiles[row + width][col - floor].getY())
+#         tiles[row - floor][col] = CollideTile(ALL_COLORS[body_color], tiles[row - floor][col].getX(), tiles[row - floor][col].getY())
+#         tiles[row - floor][col + width] = CollideTile(ALL_COLORS[body_color], tiles[row - floor][col + width].getX(), tiles[row - floor][col + width].getY())
 #
 #     for block in range(width + 1):
-#         tiles[row + block][col - height] = CollideTile(ALL_COLORS["BL"], tiles[row + block][col - height].getX(), thatiles[row + block][col - height].getY())
-
-
-
-
+#         tiles[row - height][col + block] = CollideTile(ALL_COLORS[body_color], tiles[row - height][col + floor].getX(), tiles[row - height][col + block].getY())

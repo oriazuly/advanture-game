@@ -25,7 +25,7 @@ FPS = 13  # normal: 12
 JUMP = 5  # normal: 6
 GRAVITY = 1
 X_POSITION = 1
-Y_POSITION = MAP_COLS - 2
+Y_POSITION = MAP_COLS - 20
 
 CHARACTER_HEIGHT = 20
 CHARACTER_WIDTH = 20
@@ -34,8 +34,8 @@ CHARACTER_WIDTH = 20
 CAMERA_X_START = ((SCREEN_WIDTH - 2) // SCALE) // 3
 CAMERA_X_END = MAP_ROWS - SCREEN_WIDTH // SCALE
 
-# Chandler:
-
+# Shelf:
+SHELF_HEIGHT_DIFF = int(JUMP // 2)
 
 # Tiles:
 ALL_COLORS = {"B": pygame.image.load("Colors\\black.png"),
@@ -56,6 +56,8 @@ BASIC_COLORS = {"B": pygame.image.load("Colors\\black.png"),
                 "W": pygame.image.load("Colors\\white.png")}
 
 COLLIDER_COLORS = {"X": pygame.image.load("Colors\\brick_wall.png")}
+
+OBSTACLE_COLORS = {"S": pygame.image.load("Colors\\spears.png")}
 
 #               "MCABB": pygame.image.load("Colors\\cabblestone_block.png"),
 #               "COLE": pygame.image.load("Colors\\cole_block.png"),

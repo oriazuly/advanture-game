@@ -2,8 +2,10 @@ import pygame.transform
 import Constants
 from BasicTile import BasicTile
 from CollideTile import CollideTile
-from CollideTile import *
+from ObstacleTile import ObstacleTile
 from BasicTile import *
+from CollideTile import *
+from ObstacleTile import *
 import Camera
 import random  # random.randint(1, 10)
 
@@ -42,6 +44,10 @@ def generate_tiles(map):  # create the tiles based of the map
             for color in Constants.COLLIDER_COLORS:
                 if map[row][col] == color:
                     new_line.append(CollideTile(Constants.COLLIDER_COLORS[color], row, col))
+
+            for color in Constants.OBSTACLE_COLORS:
+                if map[row][col] == color:
+                    new_line.append(ObstacleTile(Constants.OBSTACLE_COLORS[color], row, col))
         tiles.append(new_line)
     return tiles
 
@@ -52,10 +58,8 @@ def write_map(map_name, rows, cols):  # create a basic editable text file with a
         for col in range(cols):
             if row == 0 or row == rows - 1 or col == 0 or col == cols - 1:
                 f.write("X ")
-            # elif col < 6:
-            #     f.write("T ")
-            # elif col < 8:
-            #     f.write("B ")
+            elif col == FLOOR_HEIGHT and row > 50:
+                f.write("S ")
             else:
                 f.write("W ")
         f.write("\n")
