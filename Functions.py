@@ -4,6 +4,7 @@ from BasicTile import BasicTile
 from CollideTile import CollideTile
 from CollideTile import *
 from BasicTile import *
+import Camera
 import random  # random.randint(1, 10)
 
 
@@ -95,7 +96,7 @@ def isWalkable(tiles, row, col):  # is possible to move through the tile
     return tiles[row][col].isWalkable() and 0 < row < MAP_ROWS and 0 < col < MAP_COLS
 
 
-def isKillable(tiles, row, col):  # is touch this tile will kill you
+def isKilled(tiles, row, col):  # is touch this tile will kill you
     return tiles[row][col].isKillable()
 
 
@@ -107,6 +108,17 @@ def print_tiles(tiles):
             else:
                 print("b", end="")
         print()
+
+
+def kill_character(character):
+    character.reset()
+    Camera.Camera.reset()
+
+
+
+
+
+
 
 
 def updatePlace(screen, map, col, row):  # if the map not moving

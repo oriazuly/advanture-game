@@ -6,8 +6,8 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 500
 
 # Map:
-MAP_ROWS = 250  # normal: 250
-MAP_COLS = 25  # normal: 25
+MAP_ROWS = 400  # normal: 350, after change use write_map("map.txt", MAP_ROWS, MAP_COLS)
+MAP_COLS = 25  # normal: 25, after change use write_map("map.txt", MAP_ROWS, MAP_COLS)
 CELLING_HEIGHT = 1  # use as col
 FLOOR_HEIGHT = MAP_COLS - 2  # use as col
 
@@ -18,11 +18,11 @@ INVENTORY_ITEM_SCALE = 40
 
 # Other:
 SCALE = 20
-SPEED = 3
-FPS = 12  # normal: 10
+SPEED = 1
+FPS = 13  # normal: 12
 
 # BasicCharacter:
-JUMP = 7  # normal: 6
+JUMP = 5  # normal: 6
 GRAVITY = 1
 X_POSITION = 1
 Y_POSITION = MAP_COLS - 2
@@ -35,6 +35,7 @@ CAMERA_X_START = ((SCREEN_WIDTH - 2) // SCALE) // 3
 CAMERA_X_END = MAP_ROWS - SCREEN_WIDTH // SCALE
 
 # Chandler:
+
 
 # Tiles:
 ALL_COLORS = {"B": pygame.image.load("Colors\\black.png"),
