@@ -67,4 +67,4 @@ def create_shelf(tiles, length, body_color, row, col):
 def create_border(tiles, height, width, body_color, row, col):
     for i in range(height):
         for j in range(width):
-            tiles[row][col].setImgSrc(COLLIDER_COLORS[body_color])
+            tiles[row + i][col - j].setImgSrc(COLLIDER_COLORS[body_color])
