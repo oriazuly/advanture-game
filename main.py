@@ -19,7 +19,11 @@ map = read_map()
 tiles = generate_tiles(map)
 create_desk(tiles, 3, MAP_ROWS - 12, "G", 10, FLOOR_HEIGHT)
 create_chandeliers(30, 20, tiles, "M", "Y", 40, CELLING_HEIGHT)
-create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 1.5))
+create_low_chandelier(tiles, "M", "Y", 4, CELLING_HEIGHT)
+
+create_border(tiles, 10, 10, "X", 4, FLOOR_HEIGHT)  # not working
+
+# create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 1.5))
 
 character_src = pygame.image.load("Character\\cube.png")
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))

@@ -25,11 +25,23 @@ def create_chandelier(tiles, body_color, light_color, row, col):
     tiles[row + 2][col + 4].setImgSrc(BASIC_COLORS[body_color])
     tiles[row - 2][col + 4].setImgSrc(BASIC_COLORS[body_color])
 
-    tiles[row][col + 5].setImgSrc(BASIC_COLORS[body_color])
+    tiles[row][col + 5].setImgSrc(BASIC_COLORS[light_color])
     tiles[row + 2][col + 5].setImgSrc(BASIC_COLORS[light_color])
     tiles[row - 2][col + 5].setImgSrc(BASIC_COLORS[light_color])
 
-    tiles[row][col + 5].setImgSrc(BASIC_COLORS[light_color])
+
+def create_low_chandelier(tiles, body_color, light_color, row, col):
+    tiles[row][col].setImgSrc(BASIC_COLORS[body_color])
+
+    tiles[row][col + 1].setImgSrc(BASIC_COLORS[body_color])
+    tiles[row + 1][col + 1].setImgSrc(BASIC_COLORS[body_color])
+    tiles[row - 1][col + 1].setImgSrc(BASIC_COLORS[body_color])
+
+    tiles[row][col + 2].setImgSrc(BASIC_COLORS[body_color])
+    tiles[row + 1][col + 2].setImgSrc(BASIC_COLORS[light_color])
+    tiles[row - 1][col + 2].setImgSrc(BASIC_COLORS[light_color])
+
+    tiles[row][col + 3].setImgSrc(BASIC_COLORS[light_color])
 
 
 def create_desk(tiles, height, width, body_color, row, col):
@@ -51,10 +63,8 @@ def create_shelf(tiles, length, body_color, row, col):
     for block in range(length + 1):
         tiles[row + block][col] = CollideTile(ALL_COLORS[body_color], tiles[row + block][col].getX(), tiles[row + block][col].getY())
 
-# def create_border(tiles, height, width, body_color, row, col):
-#     for floor in range(height):
-#         tiles[row - floor][col] = CollideTile(ALL_COLORS[body_color], tiles[row - floor][col].getX(), tiles[row - floor][col].getY())
-#         tiles[row - floor][col + width] = CollideTile(ALL_COLORS[body_color], tiles[row - floor][col + width].getX(), tiles[row - floor][col + width].getY())
-#
-#     for block in range(width + 1):
-#         tiles[row - height][col + block] = CollideTile(ALL_COLORS[body_color], tiles[row - height][col + floor].getX(), tiles[row - height][col + block].getY())
+
+def create_border(tiles, height, width, body_color, row, col):
+    for i in range(height):
+        for j in range(width):
+            tiles[row][col].setImgSrc(COLLIDER_COLORS[body_color])
