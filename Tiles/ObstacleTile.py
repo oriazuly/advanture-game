@@ -1,11 +1,10 @@
 import pygame
 from Constants import *
 from Functions import *
-from Tile import Tile
-from CollideTile import CollideTile
+from Tiles.Tile import Tile
 
 
-class BasicTile(Tile):  # background tile, don't do much but that
+class ObstacleTile(Tile):  # tile who will kill the character if touched
     def __init__(self, img_src, x, y):
         super().__init__(img_src, x, y)
 
@@ -13,4 +12,4 @@ class BasicTile(Tile):  # background tile, don't do much but that
         return True
 
     def isKillable(self):
-        return False
+        return True

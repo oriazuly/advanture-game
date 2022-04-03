@@ -1,4 +1,4 @@
-from CollideTile import CollideTile
+from Tiles.CollideTile import CollideTile
 from Constants import *
 from random import randint
 

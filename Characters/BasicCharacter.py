@@ -1,7 +1,7 @@
 import pygame
 from Constants import *
 from Functions import *
-from Character import Character
+from Characters.Character import Character
 
 
 class BasicCharacter(Character):  # normal walkable character

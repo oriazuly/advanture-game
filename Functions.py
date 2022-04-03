@@ -1,11 +1,8 @@
 import pygame.transform
 import Constants
-from BasicTile import BasicTile
-from CollideTile import CollideTile
-from ObstacleTile import ObstacleTile
-from BasicTile import *
-from CollideTile import *
-from ObstacleTile import *
+from Tiles.BasicTile import *
+from Tiles.CollideTile import *
+from Tiles.ObstacleTile import *
 import Camera
 import random  # random.randint(1, 10)
 
