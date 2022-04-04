@@ -12,9 +12,8 @@ screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("Adventure_game")
 pygame.display.flip()
 
-write_map("map.txt", MAP_ROWS, MAP_COLS)
+# write_map("map.txt", MAP_ROWS, MAP_COLS)
 map = generate_map(MAP_ROWS, MAP_COLS)
-write_map("map.txt", MAP_ROWS, MAP_COLS)
 map = read_map()
 tiles = generate_tiles(map)
 create_desk(tiles, 3, MAP_ROWS - 12, "G", 10, FLOOR_HEIGHT)
@@ -23,7 +22,7 @@ create_low_chandelier(tiles, "M", "Y", 4, CELLING_HEIGHT)
 
 create_border(tiles, 5, 5, "X", 4, FLOOR_HEIGHT)
 
-# create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 1.5))
+create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 1.5))
 
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
