@@ -40,3 +40,6 @@ class ReversedCharacter(Character):
             self.actualX += SPEED
 
         return camera_end, jumping, jump_counter, falling
+
+    def type(self):
+        return "R"

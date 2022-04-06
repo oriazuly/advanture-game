@@ -14,6 +14,9 @@ class Character:
     def movement(self):
         pass
 
+    def type(self):
+        pass
+
     def reset(self):
         self.x = X_POSITION
         self.actualX = X_POSITION

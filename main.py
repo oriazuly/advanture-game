@@ -38,7 +38,7 @@ create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 1.5))
 
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
-character = ReversedCharacter(character_src, X_POSITION, Y_POSITION)
+character = BasicCharacter(character_src, X_POSITION, Y_POSITION)
 text = beginner()
 
 jumping = False
@@ -47,6 +47,7 @@ falling = False
 camera_end = CAMERA_X_END
 run = True
 killed = False
+changeable = True
 clock = pygame.time.Clock()
 
 while run:
@@ -54,6 +55,13 @@ while run:
     for event in pygame.event.get():  # close pygame
         if event.type == pygame.QUIT:
             run = False
+
+    keys = pygame.key.get_pressed()
+    if changeable and keys[pygame.K_r]:
+        if character.type() == "B":
+            character = ReversedCharacter(character_src, character.getX(), character.getY())
+        elif character.type() == "R":
+            character = BasicCharacter(character_src, character.getX(), character.getY())
 
     camera_end, jumping, jump_counter, falling = character.movement(map, tiles, camera_end, jumping, jump_counter, falling)
     if isKilled(tiles, character.getX(), character.getY()):

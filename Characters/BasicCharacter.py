@@ -41,3 +41,5 @@ class BasicCharacter(Character):  # normal walkable character
         
         return camera_end, jumping, jump_counter, falling
 
+    def type(self):
+        return "B"
