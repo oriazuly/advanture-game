@@ -12,10 +12,12 @@ def beginner():
     return "This is the easier level"
 
 def advanced():
-    pass
+    return "This is the advance level good luck my friend"
 
 def hard_level():
-    pass
+    text = "Impossible level you are insane?!"
+    finale_text = "you are insane?!"
+    return text, finale_text
 
 
 pygame.init()
@@ -39,7 +41,6 @@ create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 1.5))
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
 character = BasicCharacter(character_src, X_POSITION, Y_POSITION)
-text = beginner()
 
 jumping = False
 jump_counter = 0
@@ -63,6 +64,13 @@ while run:
         elif character.type() == "R":
             character = BasicCharacter(character_src, character.getX(), character.getY())
             changeable = False
+
+    if X_TEXT_POS == 0:
+        text = beginner()
+    elif X_TEXT_POS == 200:
+        text = advanced()
+    else:
+        text = hard_level()
 
     camera_end, jumping, jump_counter, falling, changeable = character.movement(map, tiles, camera_end, jumping, jump_counter, falling, changeable)
     if isKilled(tiles, character.getX(), character.getY()):
