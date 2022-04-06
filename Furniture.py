@@ -54,7 +54,7 @@ def create_desk(tiles, height, width, body_color, row, col):
 
 
 def create_shelves(distance, tiles, length, body_color, row, col):
-    for shelf in range(MAP_ROWS // (length + distance)):
+    for shelf in range(MAP_ROWS // distance + length // SCALE):
         random = randint(-SHELF_HEIGHT_DIFF, SHELF_HEIGHT_DIFF)
         create_shelf(tiles, length, body_color, row + distance * shelf, col + random)
 

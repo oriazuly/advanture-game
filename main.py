@@ -3,6 +3,7 @@ from Constants import *
 from Functions import *
 from Characters.Character import *
 from Characters.BasicCharacter import *
+from Characters.ReversedCharacter import *
 from Furniture import *
 from Camera import *
 
@@ -36,7 +37,7 @@ create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 1.5))
 
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
-character = BasicCharacter(character_src, X_POSITION, Y_POSITION)
+character = ReversedCharacter(character_src, X_POSITION, Y_POSITION)
 
 
 jumping = False
