@@ -7,8 +7,9 @@ from Characters.ReversedCharacter import *
 from Furniture import *
 from Camera import *
 
+text = ""
 def beginner():
-    pass
+    return "This is the easier level"
 
 def advanced():
     pass
@@ -27,7 +28,7 @@ pygame.display.flip()
 map = generate_map(MAP_ROWS, MAP_COLS)
 map = read_map()
 tiles = generate_tiles(map)
-create_desk(tiles, 3, MAP_ROWS - 12, "G", 10, FLOOR_HEIGHT)
+# create_desk(tiles, 3, MAP_ROWS - 12, "G", 10, FLOOR_HEIGHT)
 create_chandeliers(30, 20, tiles, "M", "Y", 40, CELLING_HEIGHT)
 create_low_chandelier(tiles, "M", "Y", 4, CELLING_HEIGHT)
 
@@ -38,7 +39,7 @@ create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 1.5))
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
 character = ReversedCharacter(character_src, X_POSITION, Y_POSITION)
-
+text = beginner()
 
 jumping = False
 jump_counter = 0
@@ -60,7 +61,7 @@ while run:
 
     Camera.update()
     screen.fill((0, 0, 0))  # Clear the screen, add another layout
-    Camera.draw(screen, tiles, character, 300)
+    Camera.draw(screen, tiles, character, 300, text)
     pygame.display.update()  # update the screen
 
 pygame.quit()

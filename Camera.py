@@ -15,20 +15,19 @@ class Camera:
     def __draw_player(screen, character):
         screen.blit(character.getImageSrc(), (character.getX() * SCALE - Camera.x, character.getY() * SCALE - Camera.y))
 
-    def draw(screen, tiles, character, space):
+    def draw(screen, tiles, character, space, text):
         Camera.x = character.getX() * SCALE - SCREEN_WIDTH / 2  # Camera.x is already scaled so you don`t need to scale it later on
         Camera.__draw_map(screen, tiles)
-        Camera.__view_text(screen, space)
+        Camera.__view_text(screen, space, text)
         Camera.__draw_player(screen, character)
 
     def reset():
         x = 0
         y = 0
 
-    def __view_text(screen, space):
+    def __view_text(screen, space, text):
         font_name = "Ariel"
-        text_size = 25
-        text = "Hello world we programming in pycharm have fun people we have a very worthy game!!!!"
+        text_size = 50
         color = (0, 255, 120)
         x_pos = X_TEXT_POS - space
         y_pos = Y_TEXT_POS
