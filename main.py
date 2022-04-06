@@ -33,7 +33,7 @@ screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("Adventure_game")
 pygame.display.flip()
 
-# write_map("map.txt", MAP_ROWS, MAP_COLS)
+write_map("map.txt", MAP_ROWS, MAP_COLS)
 map = generate_map(MAP_ROWS, MAP_COLS)
 map = read_map()
 tiles = generate_tiles(map)
@@ -89,6 +89,9 @@ while run:
     camera_end, jumping, jump_counter, falling = character.movement(map, tiles, camera_end, jumping, jump_counter, falling)
     if isKilled(tiles, character.getX(), character.getY()):
         kill_character(character)
+        tiles = generate_tiles(map)
+        draw_map(tiles, screen, (Camera.x, Camera.y))
+        beginner()
     if not changeable:
         changeable = character.onGround(tiles)
 

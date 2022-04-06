@@ -55,7 +55,7 @@ def write_map(map_name, rows, cols):  # create a basic editable text file with a
         for col in range(cols):
             if row == 0 or row == rows - 1 or col == 0 or col == cols - 1:
                 f.write("X ")
-            elif col == FLOOR_HEIGHT and row > 50:
+            elif col == FLOOR_HEIGHT and random.randint(0, 5) == 0 or col == CELLING_HEIGHT and random.randint(0, 5) == 0:
                 f.write("S ")
             else:
                 f.write("W ")
