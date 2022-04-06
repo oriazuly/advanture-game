@@ -11,7 +11,7 @@ MAP_COLS = 25  # normal: 25, after change use write_map("map.txt", MAP_ROWS, MAP
 CELLING_HEIGHT = 1  # use as col
 FLOOR_HEIGHT = MAP_COLS - 2  # use as col
 
-# levels :
+# levels:
 Y_TEXT_POS = FLOOR_HEIGHT - 20
 X_TEXT_POS = MAP_ROWS
 
@@ -40,15 +40,6 @@ CAMERA_X_END = MAP_ROWS - SCREEN_WIDTH // SCALE
 
 # Shelf:
 SHELF_HEIGHT_DIFF = int(JUMP // 2) + 1
-
-def advanced():
-    return "This is the advance level good luck my friend"
-
-def hard_level():
-    text = "Impossible level you are insane?!"
-    finale_text = "you are insane?!"
-    return text, finale_text
-
 
 # Tiles:
 ALL_COLORS = {"B": pygame.image.load("Colors\\black.png"),
