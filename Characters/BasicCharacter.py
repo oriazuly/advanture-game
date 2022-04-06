@@ -8,7 +8,7 @@ class BasicCharacter(Character):  # normal walkable character
     def __init__(self, img_src, x, y):
         super().__init__(img_src, x, y)
 
-    def movement(self, map, tiles, camera_end, jumping, jump_counter, falling):
+    def movement(self, map, tiles, camera_end, jumping, jump_counter, falling, changeable):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
             if isWalkable(tiles, self.x, self.y - JUMP) and not jumping:  # start the jump and avoid double jump
@@ -30,6 +30,7 @@ class BasicCharacter(Character):  # normal walkable character
 
         if not isWalkable(tiles, self.actualX, self.y + 1):  # turn off the fall system when touched the ground
             falling = False
+            changeable = True
 
         # make the character move forward
         for x in range(self.actualX + 1, self.actualX + 1 + SPEED):
@@ -39,7 +40,10 @@ class BasicCharacter(Character):  # normal walkable character
         else:
             self.actualX += SPEED
         
-        return camera_end, jumping, jump_counter, falling
+        return camera_end, jumping, jump_counter, falling, changeable
+
+    def onGround(self):
+
 
     def type(self):
         return "B"

@@ -62,8 +62,9 @@ while run:
             character = ReversedCharacter(character_src, character.getX(), character.getY())
         elif character.type() == "R":
             character = BasicCharacter(character_src, character.getX(), character.getY())
+            changeable = False
 
-    camera_end, jumping, jump_counter, falling = character.movement(map, tiles, camera_end, jumping, jump_counter, falling)
+    camera_end, jumping, jump_counter, falling, changeable = character.movement(map, tiles, camera_end, jumping, jump_counter, falling, changeable)
     if isKilled(tiles, character.getX(), character.getY()):
         kill_character(character)
 
