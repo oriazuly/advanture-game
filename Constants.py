@@ -39,7 +39,16 @@ CAMERA_X_START = ((SCREEN_WIDTH - 2) // SCALE) // 3
 CAMERA_X_END = MAP_ROWS - SCREEN_WIDTH // SCALE
 
 # Shelf:
-SHELF_HEIGHT_DIFF = int(JUMP // 2)
+SHELF_HEIGHT_DIFF = int(JUMP // 2) + 1
+
+def advanced():
+    return "This is the advance level good luck my friend"
+
+def hard_level():
+    text = "Impossible level you are insane?!"
+    finale_text = "you are insane?!"
+    return text, finale_text
+
 
 # Tiles:
 ALL_COLORS = {"B": pygame.image.load("Colors\\black.png"),
