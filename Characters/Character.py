@@ -8,10 +8,16 @@ class Character:
         self.img_src = img_src
         self.x = x
         self.y = y
+        self.actualX = x
         self.camera_pos = 0
 
     def movement(self):
         pass
+
+    def reset(self):
+        self.x = X_POSITION
+        self.actualX = X_POSITION
+        self.y = Y_POSITION
 
     def getImageSrc(self):
         return self.img_src
