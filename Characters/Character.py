@@ -14,6 +14,9 @@ class Character:
     def movement(self):
         pass
 
+    def onGround(self):
+        pass
+
     def type(self):
         pass
 

@@ -41,5 +41,8 @@ class ReversedCharacter(Character):
 
         return camera_end, jumping, jump_counter, falling
 
+    def onGround(self, tiles):
+        return not isWalkable(tiles, self.actualX, self.y - 1)
+
     def type(self):
         return "R"

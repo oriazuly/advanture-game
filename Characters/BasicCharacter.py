@@ -42,8 +42,8 @@ class BasicCharacter(Character):  # normal walkable character
         
         return camera_end, jumping, jump_counter, falling, changeable
 
-    def onGround(self):
-
+    def onGround(self, tiles):
+        return not isWalkable(tiles, self.actualX, self.y + 1)
 
     def type(self):
         return "B"
