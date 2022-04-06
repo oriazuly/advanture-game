@@ -3,7 +3,7 @@ from Constants import *
 from Functions import *
 from Characters.Character import *
 from Characters.BasicCharacter import *
-from Characters.RevesedCharacter import *
+from Characters.ReversedCharacter import *
 from Furniture import *
 from Camera import *
 
