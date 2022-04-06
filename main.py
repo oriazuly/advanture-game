@@ -60,8 +60,13 @@ while run:
     keys = pygame.key.get_pressed()
     if changeable and keys[pygame.K_r]:
         if character.type() == "B":
+            character_src = pygame.image.load("Characters/Character\\cubeReversed.png")
+            character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
             character = ReversedCharacter(character_src, character.getX(), character.getY())
+
         elif character.type() == "R":
+            character_src = pygame.image.load("Characters/Character\\cube.png")
+            character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
             character = BasicCharacter(character_src, character.getX(), character.getY())
             changeable = False
 
