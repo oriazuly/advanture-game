@@ -65,16 +65,18 @@ while run:
             character = BasicCharacter(character_src, character.getX(), character.getY())
             changeable = False
 
-    if X_TEXT_POS == 0:
-        text = beginner()
-    elif X_TEXT_POS == 200:
-        text = advanced()
-    else:
-        text = hard_level()
+    # if X_TEXT_POS == 0:
+    #     text = beginner()
+    # elif X_TEXT_POS == 200:
+    #     text = advanced()
+    # else:
+    #     text = hard_level()
 
-    camera_end, jumping, jump_counter, falling, changeable = character.movement(map, tiles, camera_end, jumping, jump_counter, falling, changeable)
+    camera_end, jumping, jump_counter, falling = character.movement(map, tiles, camera_end, jumping, jump_counter, falling)
     if isKilled(tiles, character.getX(), character.getY()):
         kill_character(character)
+    if not changeable:
+        changeable = character.onGround(tiles)
 
     Camera.update()
     screen.fill((0, 0, 0))  # Clear the screen, add another layout

@@ -8,7 +8,7 @@ class ReversedCharacter(Character):
     def __init__(self, img_src, x, y):
         super().__init__(img_src, x, y)
 
-    def movement(self, map, tiles, camera_end, jumping, jump_counter, falling, changeable):
+    def movement(self, map, tiles, camera_end, jumping, jump_counter, falling):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
             if isWalkable(tiles, self.x, self.y + JUMP) and not jumping:  # start the jump and avoid double jump
