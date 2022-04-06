@@ -8,13 +8,20 @@ from Furniture import *
 from Camera import *
 
 text = ""
+
+
 def beginner():
+    create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
     return "This is the easier level"
 
+
 def advanced():
+    create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
     return "This is the advance level good luck my friend"
 
+
 def hard_level():
+    create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
     text = "Impossible level you are insane?!"
     finale_text = "you are insane?!"
     return text, finale_text
@@ -30,13 +37,11 @@ pygame.display.flip()
 map = generate_map(MAP_ROWS, MAP_COLS)
 map = read_map()
 tiles = generate_tiles(map)
+
 # create_desk(tiles, 3, MAP_ROWS - 12, "G", 10, FLOOR_HEIGHT)
-create_chandeliers(30, 20, tiles, "M", "Y", 40, CELLING_HEIGHT)
-create_low_chandelier(tiles, "M", "Y", 4, CELLING_HEIGHT)
-
-create_border(tiles, 5, 5, "X", 4, FLOOR_HEIGHT)
-
-create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 1.5))
+# create_chandeliers(30, 20, tiles, "M", "Y", 40, CELLING_HEIGHT)
+# create_low_chandelier(tiles, "M", "Y", 4, CELLING_HEIGHT)
+# create_border(tiles, 5, 5, "X", 4, FLOOR_HEIGHT)
 
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
@@ -50,6 +55,8 @@ run = True
 killed = False
 changeable = True
 clock = pygame.time.Clock()
+
+beginner()
 
 while run:
     clock.tick(FPS)
@@ -76,6 +83,8 @@ while run:
     #     text = advanced()
     # else:
     #     text = hard_level()
+
+
 
     camera_end, jumping, jump_counter, falling = character.movement(map, tiles, camera_end, jumping, jump_counter, falling)
     if isKilled(tiles, character.getX(), character.getY()):
