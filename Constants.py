@@ -11,6 +11,10 @@ MAP_COLS = 25  # normal: 25, after change use write_map("map.txt", MAP_ROWS, MAP
 CELLING_HEIGHT = 1  # use as col
 FLOOR_HEIGHT = MAP_COLS - 2  # use as col
 
+# levels :
+Y_TEXT_POS = FLOOR_HEIGHT - 20
+X_TEXT_POS = MAP_ROWS
+
 # Inventory:
 INVENTORY_AREA = 20
 INVENTORY_SCALE = 60

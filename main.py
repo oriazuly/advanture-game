@@ -6,6 +6,16 @@ from Characters.BasicCharacter import *
 from Furniture import *
 from Camera import *
 
+def beginner():
+    pass
+
+def advanced():
+    pass
+
+def hard_level():
+    pass
+
+
 pygame.init()
 screen_size = (SCREEN_WIDTH, SCREEN_HEIGHT)
 screen = pygame.display.set_mode(screen_size)
@@ -49,7 +59,7 @@ while run:
 
     Camera.update()
     screen.fill((0, 0, 0))  # Clear the screen, add another layout
-    Camera.draw(screen, tiles, character)
+    Camera.draw(screen, tiles, character, 300)
     pygame.display.update()  # update the screen
 
 pygame.quit()
