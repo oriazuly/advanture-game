@@ -3,6 +3,7 @@ import Constants
 from Tiles.BasicTile import *
 from Tiles.CollideTile import *
 from Tiles.ObstacleTile import *
+from Tiles.OptionTile import *
 import Camera
 import random  # random.randint(1, 10)
 
@@ -116,9 +117,27 @@ def kill_character(character):
     Camera.Camera.reset()
 
 
+def initiate_menu(screen):
+    levels = ["Beginner", "Advanced", "Extreme"]
+    rects = []
+    for rect in range(RECT_AMOUNT):
+        pygame.draw.rect(screen, RECT_COLOR, pygame.Rect(FIRST_RECT_X_POS + RECT_SPACE * rect, FIRST_RECT_Y_POS, RECT_SIZE, RECT_SIZE))
+        rects.append(OptionTile(ALL_COLORS["W"], levels[rect], FIRST_RECT_X_POS + RECT_SPACE * rect, FIRST_RECT_Y_POS))
+        add_text(screen, levels[rect], TEXT_COLOR, FIRST_RECT_X_POS + RECT_SPACE * rect + TEXT_X_SPACE, FIRST_RECT_Y_POS + TEXT_Y_SPACE)
+        pygame.display.flip()
+    return rects
 
 
+def add_text(screen, text, color, x_pos, y_pos):
+    font_name = "Arial"
+    font = pygame.font.SysFont(font_name, TEXT_SIZE)
+    screen.blit(font.render(text, True, color), (x_pos, y_pos))
 
+
+def mouse_in_button(rect, mouse_pos):
+    if rect.getX() + RECT_SIZE > mouse_pos[0] > rect.getX() and rect.getY() < mouse_pos[1] < rect.getY() + RECT_SIZE:
+        print("True")
+        return True
 
 
 

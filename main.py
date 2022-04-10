@@ -7,33 +7,28 @@ from Characters.ReversedCharacter import *
 from Furniture import *
 from Camera import *
 
-pygame.init()
-screen_size = (SCREEN_WIDTH, SCREEN_HEIGHT)
-screen = pygame.display.set_mode(screen_size)
-pygame.draw.rect(screen, color, pygame.Rect(x_pos, y_pos, width, height))
-pygame.display.flip()
-
-
 text = ""
 
 
 def beginner():
-    create_shelves(10, tiles, 6, "R", 1, int(MAP_COLS // 2))
+    create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
     return "This is the easier level"
 
 
 def advanced():
-    create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
+    create_shelves(15, tiles, 3, "R", 1, int(MAP_COLS // 2))
     return "This is the advance level good luck my friend"
 
 
-def hard_level():
-    create_shelves(10, tiles, 2, "R", 1, int(MAP_COLS // 2))
-    return "Impossible level you are insane?!"
-
+def extreme_level():
+    create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
+    text = "Impossible level you are insane?!"
+    finale_text = "you are insane?!"
+    return text, finale_text
 
 
 pygame.init()
+clock = pygame.time.Clock()
 screen_size = (SCREEN_WIDTH, SCREEN_HEIGHT)
 screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("Adventure_game")
@@ -49,6 +44,31 @@ tiles = generate_tiles(map)
 # create_low_chandelier(tiles, "M", "Y", 4, CELLING_HEIGHT)
 # create_border(tiles, 5, 5, "X", 4, FLOOR_HEIGHT)
 
+
+run = True
+clicked = False
+screen.fill((0, 0, 0))
+rects = initiate_menu(screen)
+
+while not clicked:  # Menu screen
+    clock.tick(FPS)
+    for event in pygame.event.get():  # close pygame
+        if event.type == pygame.QUIT:
+            clicked = True
+            run = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
+            if mouse_in_button(rects[0], mouse_pos):
+                beginner()
+                clicked = True
+            elif mouse_in_button(rects[1], mouse_pos):
+                advanced()
+                clicked = True
+            elif mouse_in_button(rects[2], mouse_pos):
+                extreme_level()
+                clicked = True
+
+
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
 character = BasicCharacter(character_src, X_POSITION, Y_POSITION)
@@ -57,14 +77,8 @@ jumping = False
 jump_counter = 0
 falling = False
 camera_end = CAMERA_X_END
-run = True
 killed = False
 changeable = True
-clock = pygame.time.Clock()
-
-# text = beginner()
-# text = advanced()
-text = hard_level()
 
 while run:
     clock.tick(FPS)
