@@ -95,7 +95,9 @@ def generate_inventory(map, screen):
 
 
 def isWalkable(tiles, row, col):  # is possible to move through the tile
-    return tiles[row][col].isWalkable() and 0 < row < MAP_ROWS and 0 < col < MAP_COLS
+    if 0 < row < MAP_ROWS and 0 < col < MAP_COLS:
+        return tiles[row][col].isWalkable()
+    return False
 
 
 def isKilled(tiles, row, col):  # is touch this tile will kill you
