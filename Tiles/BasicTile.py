@@ -13,3 +13,6 @@ class BasicTile(Tile):  # background tile, don't do much but that
 
     def isKillable(self):
         return False
+
+    def getType(self):
+        return "B"
