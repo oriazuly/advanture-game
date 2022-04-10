@@ -7,11 +7,18 @@ from Characters.ReversedCharacter import *
 from Furniture import *
 from Camera import *
 
+pygame.init()
+screen_size = (SCREEN_WIDTH, SCREEN_HEIGHT)
+screen = pygame.display.set_mode(screen_size)
+pygame.draw.rect(screen, color, pygame.Rect(x_pos, y_pos, width, height))
+pygame.display.flip()
+
+
 text = ""
 
 
 def beginner():
-    create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
+    create_shelves(10, tiles, 6, "R", 1, int(MAP_COLS // 2))
     return "This is the easier level"
 
 
@@ -21,10 +28,9 @@ def advanced():
 
 
 def hard_level():
-    create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
-    text = "Impossible level you are insane?!"
-    finale_text = "you are insane?!"
-    return text, finale_text
+    create_shelves(10, tiles, 2, "R", 1, int(MAP_COLS // 2))
+    return "Impossible level you are insane?!"
+
 
 
 pygame.init()
@@ -56,7 +62,9 @@ killed = False
 changeable = True
 clock = pygame.time.Clock()
 
-beginner()
+# text = beginner()
+# text = advanced()
+text = hard_level()
 
 while run:
     clock.tick(FPS)
