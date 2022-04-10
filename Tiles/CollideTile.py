@@ -13,3 +13,6 @@ class CollideTile(Tile):  # tile who used as the screen borders
 
     def isKillable(self):
         return False
+
+    def getType(self):
+        return "C"

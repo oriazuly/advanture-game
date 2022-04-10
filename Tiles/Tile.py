@@ -16,6 +16,9 @@ class Tile:  # tile used as a super class, the whole display made from them
     def isKillable(self):
         pass
 
+    def getType(self):
+        pass
+
     def getImgSrc(self):
         return self.img_src
 

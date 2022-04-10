@@ -13,3 +13,6 @@ class ObstacleTile(Tile):  # tile who will kill the character if touched
 
     def isKillable(self):
         return True
+
+    def getType(self):
+        return "O"
