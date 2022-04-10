@@ -136,7 +136,6 @@ def add_text(screen, text, color, x_pos, y_pos):
 
 def mouse_in_button(rect, mouse_pos):
     if rect.getX() + RECT_SIZE > mouse_pos[0] > rect.getX() and rect.getY() < mouse_pos[1] < rect.getY() + RECT_SIZE:
-        print("True")
         return True
 
 

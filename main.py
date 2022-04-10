@@ -22,9 +22,7 @@ def advanced():
 
 def extreme_level():
     create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
-    text = "Impossible level you are insane?!"
-    finale_text = "you are insane?!"
-    return text, finale_text
+    return "It's an Impossible level. are you insane?!"
 
 
 pygame.init()
@@ -59,13 +57,13 @@ while not clicked:  # Menu screen
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
             if mouse_in_button(rects[0], mouse_pos):
-                beginner()
+                text = beginner()
                 clicked = True
             elif mouse_in_button(rects[1], mouse_pos):
-                advanced()
+                text = advanced()
                 clicked = True
             elif mouse_in_button(rects[2], mouse_pos):
-                extreme_level()
+                text = extreme_level()
                 clicked = True
 
 
@@ -79,6 +77,7 @@ falling = False
 camera_end = CAMERA_X_END
 killed = False
 changeable = True
+counter = 0
 
 while run:
     clock.tick(FPS)
@@ -119,7 +118,8 @@ while run:
 
     Camera.update()
     screen.fill((0, 0, 0))  # Clear the screen, add another layout
-    Camera.draw(screen, tiles, character, 300, text)
+    Camera.draw(screen, tiles, character, text, counter)
     pygame.display.update()  # update the screen
+    counter += 1
 
 pygame.quit()
