@@ -33,9 +33,11 @@ pygame.display.set_caption("Adventure_game")
 pygame.display.flip()
 
 write_map("map.txt", MAP_ROWS, MAP_COLS)
-map = generate_map(MAP_ROWS, MAP_COLS)
 map = read_map()
 tiles = generate_tiles(map)
+
+
+generate_menu(screen, MENU_COLS, MENU_ROWS)
 
 # create_desk(tiles, 3, MAP_ROWS - 12, "G", 10, FLOOR_HEIGHT)
 # create_chandeliers(30, 20, tiles, "M", "Y", 40, CELLING_HEIGHT)
@@ -45,7 +47,7 @@ tiles = generate_tiles(map)
 
 run = True
 clicked = False
-screen.fill((0, 0, 0))
+# screen.fill(random_color_generator())
 rects = initiate_menu(screen)
 
 while not clicked:  # Menu screen

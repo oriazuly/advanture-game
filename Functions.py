@@ -30,6 +30,14 @@ def generate_map(rows, cols):  # auto create normal unchangeable map
     return map
 
 
+def generate_menu(screen, rows, cols):  # auto create normal menu
+    for row in range(rows):
+        for col in range(cols):
+            color = random_color_generator()
+            pygame.draw.rect(screen, color, pygame.Rect(MENU_TILE_SIZE * col, MENU_TILE_SIZE * row, MENU_TILE_SIZE, MENU_TILE_SIZE))
+            pygame.display.flip()
+
+
 def generate_tiles(map):  # create the tiles based of the map
     tiles = []
     for row in range(Constants.MAP_ROWS):
@@ -90,8 +98,12 @@ def draw_map(tiles, screen, camera_origin):  # make the tiles list (based map) a
             screen.blit(tile.getImgSrc(), (tile.getX() * Constants.SCALE - camera_x, tile.getY() * Constants.SCALE - camera_y))
 
 
-def generate_inventory(map, screen):
-    pass
+def draw_menu(tiles, screen):  # make the tiles list (based map) apper on the screen
+    for row in range(MENU_ROWS):
+        for col in range(MENU_COLS):
+            tile = tiles[row][col]
+            pygame.transform.scale(tile.getImgSrc(), (SCALE, SCALE))
+            screen.blit(tile.getImgSrc(), (tile.getX() * Constants.SCALE, tile.getY() * Constants.SCALE))
 
 
 def isWalkable(tiles, row, col):  # is possible to move through the tile
@@ -140,6 +152,12 @@ def mouse_in_button(rect, mouse_pos):
     if rect.getX() + RECT_SIZE > mouse_pos[0] > rect.getX() and rect.getY() < mouse_pos[1] < rect.getY() + RECT_SIZE:
         return True
 
+
+def random_color_generator():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return r, g, b
 
 
 def updatePlace(screen, map, col, row):  # if the map not moving
