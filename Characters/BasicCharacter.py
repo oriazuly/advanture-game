@@ -23,12 +23,12 @@ class BasicCharacter(Character):  # normal walkable character
                 jumping = False
                 jump_counter = 0
 
-        if isWalkable(tiles, self.actualX, self.y + 1) and not jumping:  # make the character fall to the ground
+        if not self.onGround(tiles) and not jumping:  # make the character fall to the ground
             self.y += GRAVITY
             jump_counter = 0
             falling = True
 
-        if not isWalkable(tiles, self.actualX, self.y + 1):  # turn off the fall system when touched the ground
+        if self.onGround(tiles):  # turn off the fall system when touched the ground
             falling = False
 
         # make the character move forward

@@ -107,7 +107,7 @@ def isKilled(tiles, row, col):  # is touch this tile will kill you
 def print_tiles(tiles):
     for row in range(len(tiles)):
         for col in range(len(tiles[row])):
-            if type(tiles[row][col]) == CollideTile:
+            if tiles[row][col].getType() == "C":
                 print("c", end="")
             else:
                 print("b", end="")
