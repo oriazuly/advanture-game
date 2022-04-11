@@ -91,6 +91,7 @@ while run:
             character_src = pygame.image.load("Characters/Character\\cubeReversed.png")
             character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
             character = ReversedCharacter(character_src, character.getX(), character.getY())
+            changeable = False
 
         elif character.type() == "R":
             character_src = pygame.image.load("Characters/Character\\cube.png")
@@ -98,20 +99,15 @@ while run:
             character = BasicCharacter(character_src, character.getX(), character.getY())
             changeable = False
 
-    # if X_TEXT_POS == 0:
-    #     text = beginner()
-    # elif X_TEXT_POS == 200:
-    #     text = advanced()
-    # else:
-    #     text = hard_level()
-
-
-
     camera_end, jumping, jump_counter, falling = character.movement(map, tiles, camera_end, jumping, jump_counter, falling)
     if isKilled(tiles, character.getX(), character.getY()):
         kill_character(character)
         tiles = generate_tiles(map)
         draw_map(tiles, screen, (Camera.x, Camera.y))
+        character_src = pygame.image.load("Characters/Character\\cube.png")
+        character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
+        character = BasicCharacter(character_src, character.getX(), character.getY())
+        changeable = True
         beginner()
     if not changeable:
         changeable = character.onGround(tiles)

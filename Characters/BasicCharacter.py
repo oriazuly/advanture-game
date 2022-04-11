@@ -30,7 +30,6 @@ class BasicCharacter(Character):  # normal walkable character
 
         if not isWalkable(tiles, self.actualX, self.y + 1):  # turn off the fall system when touched the ground
             falling = False
-            changeable = True
 
         # make the character move forward
         for x in range(self.actualX + 1, self.actualX + 1 + SPEED):
