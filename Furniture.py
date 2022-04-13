@@ -4,7 +4,7 @@ from random import randint
 
 
 def create_shelves(distance, tiles, length, body_color, row, col):
-    for shelf in range(MAP_ROWS // distance + length // SCALE):
+    for shelf in range(MAP_ROWS // distance + length // SCALE - row // distance - 1):
         random = randint(-SHELF_HEIGHT_DIFF, SHELF_HEIGHT_DIFF)
         create_shelf(tiles, length, body_color, row + distance * shelf, col + random)
 

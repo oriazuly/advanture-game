@@ -13,7 +13,7 @@ mixer.init()
 
 
 def beginner():
-    create_shelves(10, tiles, 4, "R", SHELF_LENGTH, int(MAP_COLS // 2))
+    create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
     mixer.music.load("music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
     mixer.music.set_volume(0.7)
     mixer.music.play()
@@ -21,7 +21,7 @@ def beginner():
 
 
 def advanced():
-    create_shelves(15, tiles, 4, "R", SHELF_LENGTH, int(MAP_COLS // 2))
+    create_shelves(15, tiles, 4, "R", 1, int(MAP_COLS // 2))
     mixer.music.load("music\\Geometry Dash - Polargeist All Coins.mp3")
     mixer.music.set_volume(0.7)
     mixer.music.play()
@@ -29,7 +29,7 @@ def advanced():
 
 
 def extreme_level():
-    create_shelves(15, tiles, 3, "R", SHELF_LENGTH, int(MAP_COLS // 2))
+    create_shelves(15, tiles, 3, "R", 1, int(MAP_COLS // 2))
     mixer.music.load("music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
     mixer.music.set_volume(0.7)
     mixer.music.play()
@@ -88,27 +88,29 @@ def create_options():
     mixer.music.set_volume(0.7)
     mixer.music.play()
     clicked = False
-    screen.fill((255, 255, 255))
-
-    add_text(screen, "Keys and what they do:", TEXT_COLOR, TEXT_X_SPACE, TEXT_Y_SPACE)
-    add_text(screen, "Space key ---> jump", TEXT_COLOR, TEXT_X_SPACE, TEXT_Y_SPACE + TEXT_Y_SPACE)
-    add_text(screen, "R key ---> reverse gravity", TEXT_COLOR, TEXT_X_SPACE, TEXT_Y_SPACE + TEXT_Y_SPACE * 2)
-    add_text(screen, "Esc key ---> Open difficulty menu", TEXT_COLOR, TEXT_X_SPACE, TEXT_Y_SPACE + TEXT_Y_SPACE * 3)
-    add_text(screen, "O key ---> Open options", TEXT_COLOR, TEXT_X_SPACE, TEXT_Y_SPACE + TEXT_Y_SPACE * 4)
-    pygame.display.flip()
+    screen.fill((0, 0, 0))
 
     while not clicked:
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 clicked = True
-
+                add_text(screen, "Keys and what they do:", TEXT_COLOR, TEXT_X_SPACE, TEXT_Y_SPACE)
+                add_text(screen, "Space key ---> jump", TEXT_COLOR,  TEXT_X_SPACE,TEXT_Y_SPACE + TEXT_Y_SPACE)
+                add_text(screen, "R key ---> reverse gravity", TEXT_COLOR, TEXT_X_SPACE, TEXT_Y_SPACE + TEXT_Y_SPACE * 2)
+                add_text(screen, "Esc key ---> Open difficulty menu", TEXT_COLOR, TEXT_X_SPACE, TEXT_Y_SPACE + TEXT_Y_SPACE * 3)
+                add_text(screen, "O key ---> Open options", TEXT_COLOR, TEXT_X_SPACE, TEXT_Y_SPACE + TEXT_Y_SPACE * 4)
+    pygame.display.flip()
 
 rects, text, difficulty, run = create_menu()
 
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
 character = BasicCharacter(character_src, X_POSITION, Y_POSITION)
+
+dinosaur = Dinosaur(character_src, 200, 200)
+
+
 
 jumping = False
 jump_counter = 0
@@ -164,6 +166,7 @@ while run and not finished:
             text = advanced()
         elif difficulty == 3:
             text = extreme_level()
+            dinosaur.reset()
         counter = 0
         add_text(screen, text, TEXT_COLOR, X_TEXT_POS, Y_TEXT_POS)
     if not changeable:
@@ -172,9 +175,12 @@ while run and not finished:
     if difficulty == 4:
         finished = True
 
+    dinosaur.movement(map, tiles)
+
     Camera.update()
     screen.fill((0, 0, 0))  # Clear the screen, add another layout
     Camera.draw(screen, tiles, character, text, counter)
+    screen.blit(dinosaur.img_src, (dinosaur.actualX * SCALE, dinosaur.y * SCALE))
     pygame.display.update()  # update the screen
     counter += 1
 

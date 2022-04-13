@@ -6,7 +6,7 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 500
 
 # Map:
-MAP_ROWS = 50  # normal: 350, after change use write_map("map.txt", MAP_ROWS, MAP_COLS)
+MAP_ROWS = 200  # normal: 350, after change use write_map("map.txt", MAP_ROWS, MAP_COLS)
 MAP_COLS = 25  # normal: 25, after change use write_map("map.txt", MAP_ROWS, MAP_COLS)
 CELLING_HEIGHT = 1  # use as col
 FLOOR_HEIGHT = MAP_COLS - 2  # use as col
@@ -37,6 +37,7 @@ TEXT_X_SPACE = 55
 TEXT_Y_SPACE = 85
 TEXT_SIZE = 25
 
+# Options:
 
 # Difficulty:
 difficulties = {1: "basic",
@@ -75,10 +76,10 @@ ALL_COLORS = {"R": pygame.image.load("Colors\\rust.png"),
               "W": pygame.image.load("Colors\\white.png"),
               "X": pygame.image.load("Colors\\brick_wall.png")}
 
-BASIC_COLORS = {"R": pygame.image.load("Colors\\rust.png"),
-                "W": pygame.image.load("Colors\\white.png")}
+BASIC_COLORS = {"W": pygame.image.load("Colors\\white.png")}
 
-COLLIDER_COLORS = {"X": pygame.image.load("Colors\\brick_wall.png")}
+COLLIDER_COLORS = {"X": pygame.image.load("Colors\\brick_wall.png"),
+                   "R": pygame.image.load("Colors\\rust.png")}
 
 OBSTACLE_COLORS = {"S": pygame.image.load("Colors\\spears.png"),
                    "RS": pygame.image.load("Colors\\reversed_spears.png")}
