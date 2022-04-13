@@ -26,7 +26,7 @@ def beginner():
 
 def advanced():
     create_shelves(15, tiles, 4, "R", 1, int(MAP_COLS // 2))
-    mixer.music.load("C:\\Users\\admin\Desktop\\advanture-game1\\music\\ELECTROMAN ADVENTURES FULL VERSION GEOMETRY DASH 2.11.mp3")
+    mixer.music.load("C:\\Users\\admin\Desktop\\advanture-game1\\music\\Geometry Dash - Polargeist All Coins.mp3")
     mixer.music.set_volume(0.7)
     mixer.music.play()
     return "This is the advance level good luck my friend"
