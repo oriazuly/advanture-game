@@ -16,6 +16,7 @@ mixer.music.load("C:\\Users\\admin\Desktop\\advanture-game1\\music\\ELECTROMAN A
 mixer.music.set_volume(0.7)
 mixer.music.play()
 
+
 def beginner():
     create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
     mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
@@ -34,7 +35,7 @@ def advanced():
 
 def extreme_level():
     create_shelves(15, tiles, 3, "R", 1, int(MAP_COLS // 2))
-    mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level Seven Closed Eyes.mp3")
+    mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
     mixer.music.set_volume(0.7)
     mixer.music.play()
     return "It's an Impossible level. are you insane?!"
@@ -51,32 +52,41 @@ write_map("map.txt", MAP_ROWS, MAP_COLS)
 map = read_map()
 tiles = generate_tiles(map)
 
-generate_menu(screen, MENU_COLS, MENU_ROWS)
 
 run = True
 clicked = False
-rects = initiate_menu(screen)
 
-while not clicked:  # Menu screen
-    clock.tick(FPS)
-    for event in pygame.event.get():  # close pygame
-        if event.type == pygame.QUIT:
-            clicked = True
-            run = False
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_pos = (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
-            if mouse_in_button(rects[0], mouse_pos):
-                text = beginner()
-                difficulty = 1
+
+def create_menu(text, difficulty):
+    run = True
+    clicked = False
+    generate_menu(screen, MENU_COLS, MENU_ROWS)
+    rects = initiate_menu(screen)
+
+    while not clicked:  # Menu screen
+        clock.tick(FPS)
+        for event in pygame.event.get():  # close pygame
+            if event.type == pygame.QUIT:
                 clicked = True
-            elif mouse_in_button(rects[1], mouse_pos):
-                text = advanced()
-                difficulty = 2
-                clicked = True
-            elif mouse_in_button(rects[2], mouse_pos):
-                text = extreme_level()
-                difficulty = 3
-                clicked = True
+                run = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
+                if mouse_in_button(rects[0], mouse_pos):
+                    text = beginner()
+                    difficulty = 1
+                    clicked = True
+                elif mouse_in_button(rects[1], mouse_pos):
+                    text = advanced()
+                    difficulty = 2
+                    clicked = True
+                elif mouse_in_button(rects[2], mouse_pos):
+                    text = extreme_level()
+                    difficulty = 3
+                    clicked = True
+    return rects, text, difficulty, run
+
+
+rects, text, difficulty, run = create_menu(text, difficulty)
 
 
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
