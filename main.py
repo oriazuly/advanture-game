@@ -5,6 +5,7 @@ from Characters.Character import *
 from pygame import mixer
 from Characters.BasicCharacter import *
 from Characters.ReversedCharacter import *
+from Characters.Dinosaur import *
 from Furniture import *
 from Camera import *
 
@@ -24,7 +25,7 @@ def advanced():
     mixer.music.load("music\\Geometry Dash - Polargeist All Coins.mp3")
     mixer.music.set_volume(0.7)
     mixer.music.play()
-    return "This is the advance level good luck my friend"
+    return "This is the advanced level good luck my friend"
 
 
 def extreme_level():
@@ -89,6 +90,10 @@ character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folde
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
 character = BasicCharacter(character_src, X_POSITION, Y_POSITION)
 
+dinosaur = Dinosaur(character_src, 200, 200)
+
+
+
 jumping = False
 jump_counter = 0
 falling = False
@@ -140,6 +145,7 @@ while run and not finished:
             text = advanced()
         elif difficulty == 3:
             text = extreme_level()
+            dinosaur.reset()
         counter = 0
         add_text(screen, text, TEXT_COLOR, X_TEXT_POS, Y_TEXT_POS)
     if not changeable:
@@ -148,9 +154,12 @@ while run and not finished:
     if difficulty == 4:
         finished = True
 
+    dinosaur.movement(map, tiles)
+
     Camera.update()
     screen.fill((0, 0, 0))  # Clear the screen, add another layout
     Camera.draw(screen, tiles, character, text, counter)
+    screen.blit(dinosaur.img_src, (dinosaur.actualX * SCALE, dinosaur.y * SCALE))
     pygame.display.update()  # update the screen
     counter += 1
 
