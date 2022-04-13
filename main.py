@@ -2,6 +2,7 @@ import pygame
 from Constants import *
 from Functions import *
 from Characters.Character import *
+from pygame import mixer
 from Characters.BasicCharacter import *
 from Characters.ReversedCharacter import *
 from Furniture import *
@@ -10,6 +11,10 @@ from Camera import *
 difficulty = 0
 text = ""
 
+mixer.init()
+mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
+mixer.music.set_volume(0.7)
+mixer.music.play()
 
 def beginner():
     create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
