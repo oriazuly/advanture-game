@@ -101,3 +101,21 @@ def create_border(tiles, height, width, body_color, row, col):
     for i in range(height):
         for j in range(width):
             tiles[row + i][col - j] = CollideTile(COLLIDER_COLORS[body_color], tiles[row + i][col - j].getX(), tiles[row + i][col - j].getY())
+
+
+ALL_COLORS = {"B": pygame.image.load("Colors\\black.png"),
+              "BL": pygame.image.load("Colors\\blue.png"),
+              "Y": pygame.image.load("Colors\\yellow.png"),
+              "R": pygame.image.load("Colors\\rust.png"),
+              "G": pygame.image.load("Colors\\gold.png"),
+              "W": pygame.image.load("Colors\\white.png"),
+              "M": pygame.image.load("Colors\\metal.png"),
+              "X": pygame.image.load("Colors\\brick_wall.png")}
+
+BASIC_COLORS = {"B": pygame.image.load("Colors\\black.png"),
+                "BL": pygame.image.load("Colors\\blue.png"),
+                "Y": pygame.image.load("Colors\\yellow.png"),
+                "R": pygame.image.load("Colors\\rust.png"),
+                "G": pygame.image.load("Colors\\gold.png"),
+                "M": pygame.image.load("Colors\\metal.png"),
+                "W": pygame.image.load("Colors\\white.png")}

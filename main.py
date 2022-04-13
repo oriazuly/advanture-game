@@ -12,14 +12,11 @@ difficulty = 0
 text = ""
 
 mixer.init()
-mixer.music.load("C:\\Users\\admin\Desktop\\advanture-game1\\music\\ELECTROMAN ADVENTURES FULL VERSION GEOMETRY DASH 2.11.mp3")
-mixer.music.set_volume(0.7)
-mixer.music.play()
 
 
 def beginner():
     create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
-    mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
+    mixer.music.load("music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
     mixer.music.set_volume(0.7)
     mixer.music.play()
     return "This is the easier level"
@@ -27,7 +24,7 @@ def beginner():
 
 def advanced():
     create_shelves(15, tiles, 4, "R", 1, int(MAP_COLS // 2))
-    mixer.music.load("C:\\Users\\admin\Desktop\\advanture-game1\\music\\Geometry Dash - Polargeist All Coins.mp3")
+    mixer.music.load("music\\Geometry Dash - Polargeist All Coins.mp3")
     mixer.music.set_volume(0.7)
     mixer.music.play()
     return "This is the advance level good luck my friend"
@@ -35,7 +32,7 @@ def advanced():
 
 def extreme_level():
     create_shelves(15, tiles, 3, "R", 1, int(MAP_COLS // 2))
-    mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
+    mixer.music.load("music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
     mixer.music.set_volume(0.7)
     mixer.music.play()
     return "It's an Impossible level. are you insane?!"
@@ -53,15 +50,15 @@ map = read_map()
 tiles = generate_tiles(map)
 
 
-run = True
-clicked = False
-
-
 def create_menu(text, difficulty):
+    mixer.music.load("music\\ELECTROMAN ADVENTURES FULL VERSION GEOMETRY DASH 2.11.mp3")
+    mixer.music.set_volume(0.7)
+    mixer.music.play()
     run = True
     clicked = False
     generate_menu(screen, MENU_COLS, MENU_ROWS)
     rects = initiate_menu(screen)
+    time = 0
 
     while not clicked:  # Menu screen
         clock.tick(FPS)
@@ -83,11 +80,13 @@ def create_menu(text, difficulty):
                     text = extreme_level()
                     difficulty = 3
                     clicked = True
+        if time % 25 == 0:
+            update_menu_colors(screen, MENU_COLS, MENU_ROWS)
+        time += 1
     return rects, text, difficulty, run
 
 
 rects, text, difficulty, run = create_menu(text, difficulty)
-
 
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
@@ -108,6 +107,9 @@ while run:
             run = False
 
     keys = pygame.key.get_pressed()
+    if keys[pygame.K_ESCAPE]:
+        create_menu(text, difficulty)
+
     if changeable and keys[pygame.K_r]:
         if character.type() == "B":
             character_src = pygame.image.load("Characters/Character\\cubeReversed.png")
@@ -126,7 +128,7 @@ while run:
     if character.getX() == MAP_ROWS - 2:
         difficulty = next_level(difficulty)
 
-    if isKilled(tiles, character.getX(), character.getY()) or character.getX() == MAP_ROWS - 2:
+    if isKilled(tiles, character.getX(), character.getY()) or character.getX() == MAP_ROWS - 2 or keys[pygame.K_ESCAPE]:
         kill_character(character)
         tiles = generate_tiles(map)
         draw_map(tiles, screen, (Camera.x, Camera.y))

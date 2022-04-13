@@ -66,21 +66,11 @@ SHELF_HEIGHT_DIFF = int(JUMP // 2) + 1
 SHELF_LENGTH = 15
 
 # Tiles:
-ALL_COLORS = {"B": pygame.image.load("Colors\\black.png"),
-              "BL": pygame.image.load("Colors\\blue.png"),
-              "Y": pygame.image.load("Colors\\yellow.png"),
-              "R": pygame.image.load("Colors\\rust.png"),
-              "G": pygame.image.load("Colors\\gold.png"),
+ALL_COLORS = {"R": pygame.image.load("Colors\\rust.png"),
               "W": pygame.image.load("Colors\\white.png"),
-              "M": pygame.image.load("Colors\\metal.png"),
               "X": pygame.image.load("Colors\\brick_wall.png")}
 
-BASIC_COLORS = {"B": pygame.image.load("Colors\\black.png"),
-                "BL": pygame.image.load("Colors\\blue.png"),
-                "Y": pygame.image.load("Colors\\yellow.png"),
-                "R": pygame.image.load("Colors\\rust.png"),
-                "G": pygame.image.load("Colors\\gold.png"),
-                "M": pygame.image.load("Colors\\metal.png"),
+BASIC_COLORS = {"R": pygame.image.load("Colors\\rust.png"),
                 "W": pygame.image.load("Colors\\white.png")}
 
 COLLIDER_COLORS = {"X": pygame.image.load("Colors\\brick_wall.png")}

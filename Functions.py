@@ -75,6 +75,16 @@ def generate_menu(screen, rows, cols):  # auto create normal menu
             pygame.display.flip()
 
 
+def update_menu_colors(screen, rows, cols):  # auto create normal menu
+    for row in range(rows):
+        for col in range(cols):
+            if random.randint(0, 100) < 12:
+                color = random_color_generator()
+                pygame.draw.rect(screen, color, pygame.Rect(MENU_TILE_SIZE * col, MENU_TILE_SIZE * row, MENU_TILE_SIZE, MENU_TILE_SIZE))
+                pygame.display.flip()
+                initiate_menu(screen)
+
+
 def initiate_menu(screen):
     levels = ["Beginner", "Advanced", "Extreme"]
     rects = []
