@@ -5,7 +5,6 @@ from Characters.Character import *
 from pygame import mixer
 from Characters.BasicCharacter import *
 from Characters.ReversedCharacter import *
-from Characters.Dinosaur import *
 from Furniture import *
 from Camera import *
 mixer.init()
