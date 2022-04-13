@@ -2,6 +2,7 @@ import pygame.transform
 import Constants
 from Tiles.BasicTile import *
 from Tiles.CollideTile import *
+from Tiles.CollideTile import CollideTile
 from Tiles.ObstacleTile import *
 from Tiles.OptionTile import *
 import Camera
