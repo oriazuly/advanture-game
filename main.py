@@ -7,6 +7,7 @@ from Characters.ReversedCharacter import *
 from Furniture import *
 from Camera import *
 
+difficulty = 0
 text = ""
 
 
@@ -60,12 +61,15 @@ while not clicked:  # Menu screen
             mouse_pos = (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
             if mouse_in_button(rects[0], mouse_pos):
                 text = beginner()
+                difficulty = 1
                 clicked = True
             elif mouse_in_button(rects[1], mouse_pos):
                 text = advanced()
+                difficulty = 2
                 clicked = True
             elif mouse_in_button(rects[2], mouse_pos):
                 text = extreme_level()
+                difficulty = 3
                 clicked = True
 
 
