@@ -12,7 +12,7 @@ difficulty = 0
 text = ""
 
 mixer.init()
-mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
+mixer.music.load("C:\\Users\\admin\Desktop\\advanture-game1\\music\\ELECTROMAN ADVENTURES FULL VERSION GEOMETRY DASH 2.11.mp3")
 mixer.music.set_volume(0.7)
 mixer.music.play()
 
@@ -69,6 +69,9 @@ while not clicked:  # Menu screen
                 difficulty = 3
                 clicked = True
 
+mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
+mixer.music.set_volume(0.7)
+mixer.music.play()
 
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
