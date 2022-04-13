@@ -36,6 +36,13 @@ TEXT_X_SPACE = 55
 TEXT_Y_SPACE = 85
 TEXT_SIZE = 25
 
+
+# Difficulty:
+difficulties = {1: "basic",
+                2: "advanced",
+                3: "extreme"}
+
+
 # Other:
 SCALE = 20
 SPEED = 1
@@ -56,6 +63,7 @@ CAMERA_X_END = MAP_ROWS - SCREEN_WIDTH // SCALE
 
 # Shelf:
 SHELF_HEIGHT_DIFF = int(JUMP // 2) + 1
+SHELF_LENGTH = 15
 
 # Tiles:
 ALL_COLORS = {"B": pygame.image.load("Colors\\black.png"),
@@ -78,12 +86,3 @@ BASIC_COLORS = {"B": pygame.image.load("Colors\\black.png"),
 COLLIDER_COLORS = {"X": pygame.image.load("Colors\\brick_wall.png")}
 
 OBSTACLE_COLORS = {"S": pygame.image.load("Colors\\spears.png")}
-
-#               "MCABB": pygame.image.load("Colors\\cabblestone_block.png"),
-#               "COLE": pygame.image.load("Colors\\cole_block.png"),
-#               "GRASS": pygame.image.load("Colors\\grass_block.png"),
-#               "IRON": pygame.image.load("Colors\\iron_block.png"),
-#               "MOISTY": pygame.image.load("Colors\\moisty_block.png"),
-#               "TNT": pygame.image.load("Colors\\tnt_block.png"),
-#               "N": pygame.image.load("House_colors\\normal.png"),
-#               "T": pygame.image.load("House_colors\\top.png")

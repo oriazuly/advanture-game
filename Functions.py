@@ -91,6 +91,12 @@ def draw_menu(tiles, screen):  # make the tiles list (based map) apper on the sc
             screen.blit(tile.getImgSrc(), (tile.getX() * Constants.SCALE, tile.getY() * Constants.SCALE))
 
 
+# Game progress:
+def next_level(difficulty):
+    if difficulty == 2:
+
+
+
 # Other:
 def add_text(screen, text, color, x_pos, y_pos):
     font_name = "Arial"
