@@ -8,56 +8,7 @@ import Camera
 import random  # random.randint(1, 10)
 
 
-def generate_map(rows, cols):  # auto create normal unchangeable map
-    map = []
-    for row in range(rows):
-        new_line = []
-        for col in range(cols):
-            if row == 0 or row == rows - 1 or col == 0 or col == cols - 1:
-                new_line.append("X")
-            else:
-                random_value = random.randint(1, 100)
-                if random_value < 95:
-                    new_line.append("CABB")
-                elif 95 < random_value < 97:
-                    new_line.append("COLE")
-                elif 97 < random_value < 99:
-                    new_line.append("IRON")
-                else:
-                    new_line.append("MOISTY")
-
-        map.append(new_line)
-    return map
-
-
-def generate_menu(screen, rows, cols):  # auto create normal menu
-    for row in range(rows):
-        for col in range(cols):
-            color = random_color_generator()
-            pygame.draw.rect(screen, color, pygame.Rect(MENU_TILE_SIZE * col, MENU_TILE_SIZE * row, MENU_TILE_SIZE, MENU_TILE_SIZE))
-            pygame.display.flip()
-
-
-def generate_tiles(map):  # create the tiles based of the map
-    tiles = []
-    for row in range(Constants.MAP_ROWS):
-        new_line = []
-        for col in range(Constants.MAP_COLS):
-            for color in Constants.BASIC_COLORS:
-                if map[row][col] == color:
-                    new_line.append(BasicTile(Constants.BASIC_COLORS[color], row, col))
-
-            for color in Constants.COLLIDER_COLORS:
-                if map[row][col] == color:
-                    new_line.append(CollideTile(Constants.COLLIDER_COLORS[color], row, col))
-
-            for color in Constants.OBSTACLE_COLORS:
-                if map[row][col] == color:
-                    new_line.append(ObstacleTile(Constants.OBSTACLE_COLORS[color], row, col))
-        tiles.append(new_line)
-    return tiles
-
-
+# Map:
 def write_map(map_name, rows, cols):  # create a basic editable text file with a basic map
     f = open(map_name, "w")
     for row in range(rows):
@@ -82,13 +33,6 @@ def read_map():  # read the .txt map and return it
     return world
 
 
-def print_map(map):  # print the map
-    for row in range(len(map)):
-        for col in range(len(map[row])):
-            print(map[row][col], end=", ")
-        print()
-
-
 def draw_map(tiles, screen, camera_origin):  # make the tiles list (based map) apper on the screen
     for row in range(MAP_ROWS):
         for col in range(MAP_COLS):
@@ -98,37 +42,34 @@ def draw_map(tiles, screen, camera_origin):  # make the tiles list (based map) a
             screen.blit(tile.getImgSrc(), (tile.getX() * Constants.SCALE - camera_x, tile.getY() * Constants.SCALE - camera_y))
 
 
-def draw_menu(tiles, screen):  # make the tiles list (based map) apper on the screen
-    for row in range(MENU_ROWS):
-        for col in range(MENU_COLS):
-            tile = tiles[row][col]
-            pygame.transform.scale(tile.getImgSrc(), (SCALE, SCALE))
-            screen.blit(tile.getImgSrc(), (tile.getX() * Constants.SCALE, tile.getY() * Constants.SCALE))
+# Tiles:
+def generate_tiles(map):  # create the tiles based of the map
+    tiles = []
+    for row in range(Constants.MAP_ROWS):
+        new_line = []
+        for col in range(Constants.MAP_COLS):
+            for color in Constants.BASIC_COLORS:
+                if map[row][col] == color:
+                    new_line.append(BasicTile(Constants.BASIC_COLORS[color], row, col))
+
+            for color in Constants.COLLIDER_COLORS:
+                if map[row][col] == color:
+                    new_line.append(CollideTile(Constants.COLLIDER_COLORS[color], row, col))
+
+            for color in Constants.OBSTACLE_COLORS:
+                if map[row][col] == color:
+                    new_line.append(ObstacleTile(Constants.OBSTACLE_COLORS[color], row, col))
+        tiles.append(new_line)
+    return tiles
 
 
-def isWalkable(tiles, row, col):  # is possible to move through the tile
-    if 0 < row < MAP_ROWS and 0 < col < MAP_COLS:
-        return tiles[row][col].isWalkable()
-    return False
-
-
-def isKilled(tiles, row, col):  # is touch this tile will kill you
-    return tiles[row][col].isKillable()
-
-
-def print_tiles(tiles):
-    for row in range(len(tiles)):
-        for col in range(len(tiles[row])):
-            if tiles[row][col].getType() == "C":
-                print("c", end="")
-            else:
-                print("b", end="")
-        print()
-
-
-def kill_character(character):
-    character.reset()
-    Camera.Camera.reset()
+# Menu:
+def generate_menu(screen, rows, cols):  # auto create normal menu
+    for row in range(rows):
+        for col in range(cols):
+            color = random_color_generator()
+            pygame.draw.rect(screen, color, pygame.Rect(MENU_TILE_SIZE * col, MENU_TILE_SIZE * row, MENU_TILE_SIZE, MENU_TILE_SIZE))
+            pygame.display.flip()
 
 
 def initiate_menu(screen):
@@ -142,6 +83,15 @@ def initiate_menu(screen):
     return rects
 
 
+def draw_menu(tiles, screen):  # make the tiles list (based map) apper on the screen
+    for row in range(MENU_ROWS):
+        for col in range(MENU_COLS):
+            tile = tiles[row][col]
+            pygame.transform.scale(tile.getImgSrc(), (SCALE, SCALE))
+            screen.blit(tile.getImgSrc(), (tile.getX() * Constants.SCALE, tile.getY() * Constants.SCALE))
+
+
+# Other:
 def add_text(screen, text, color, x_pos, y_pos):
     font_name = "Arial"
     font = pygame.font.SysFont(font_name, TEXT_SIZE)
@@ -160,7 +110,16 @@ def random_color_generator():
     return r, g, b
 
 
-def updatePlace(screen, map, col, row):  # if the map not moving
-    tile = Constants.ALL_COLORS[map[row][col]]
-    pygame.transform.scale(tile, (20, 20))
-    screen.blit(tile, (row * Constants.SCALE, col * Constants.SCALE))
+def isWalkable(tiles, row, col):  # is possible to move through the tile
+    if 0 < row < MAP_ROWS and 0 < col < MAP_COLS:
+        return tiles[row][col].isWalkable()
+    return False
+
+
+def isKilled(tiles, row, col):  # is touch this tile will kill you
+    return tiles[row][col].isKillable()
+
+
+def kill_character(character):
+    character.reset()
+    Camera.Camera.reset()
