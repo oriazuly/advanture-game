@@ -95,9 +95,10 @@ falling = False
 camera_end = CAMERA_X_END
 killed = False
 changeable = True
+finished = False
 counter = 0
 
-while run:
+while run and not finished:
     clock.tick(FPS)
     for event in pygame.event.get():  # close pygame
         if event.type == pygame.QUIT:
@@ -144,10 +145,23 @@ while run:
     if not changeable:
         changeable = character.onGround(tiles)
 
+    if difficulty == 4:
+        finished = True
+
     Camera.update()
     screen.fill((0, 0, 0))  # Clear the screen, add another layout
     Camera.draw(screen, tiles, character, text, counter)
     pygame.display.update()  # update the screen
     counter += 1
+
+screen.fill(random_color_generator())  # Clear the screen, add another layout
+add_text(screen, "Well played, you won!", (0, 0, 0), 100, 100)
+pygame.display.update()
+while finished:
+    for event in pygame.event.get():  # close pygame
+        if event.type == pygame.QUIT:
+            finished = False
+
+
 
 pygame.quit()
