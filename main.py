@@ -18,16 +18,25 @@ mixer.music.play()
 
 def beginner():
     create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
+    mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
+    mixer.music.set_volume(0.7)
+    mixer.music.play()
     return "This is the easier level"
 
 
 def advanced():
     create_shelves(15, tiles, 4, "R", 1, int(MAP_COLS // 2))
+    mixer.music.load("C:\\Users\\admin\Desktop\\advanture-game1\\music\\ELECTROMAN ADVENTURES FULL VERSION GEOMETRY DASH 2.11.mp3")
+    mixer.music.set_volume(0.7)
+    mixer.music.play()
     return "This is the advance level good luck my friend"
 
 
 def extreme_level():
     create_shelves(15, tiles, 3, "R", 1, int(MAP_COLS // 2))
+    mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
+    mixer.music.set_volume(0.7)
+    mixer.music.play()
     return "It's an Impossible level. are you insane?!"
 
 
@@ -69,9 +78,6 @@ while not clicked:  # Menu screen
                 difficulty = 3
                 clicked = True
 
-mixer.music.load("C:\\Users\\admin\\Desktop\\advanture-game1\\music\\Geometry Dash - Level 1 -Stereo Madness (All Coins).mp3")
-mixer.music.set_volume(0.7)
-mixer.music.play()
 
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
