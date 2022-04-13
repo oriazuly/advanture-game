@@ -8,9 +8,6 @@ from Characters.ReversedCharacter import *
 from Furniture import *
 from Camera import *
 
-difficulty = 0
-text = ""
-
 mixer.init()
 
 
@@ -50,7 +47,7 @@ map = read_map()
 tiles = generate_tiles(map)
 
 
-def create_menu(text, difficulty):
+def create_menu():
     mixer.music.load("music\\ELECTROMAN ADVENTURES FULL VERSION GEOMETRY DASH 2.11.mp3")
     mixer.music.set_volume(0.7)
     mixer.music.play()
@@ -86,7 +83,7 @@ def create_menu(text, difficulty):
     return rects, text, difficulty, run
 
 
-rects, text, difficulty, run = create_menu(text, difficulty)
+rects, text, difficulty, run = create_menu()
 
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
@@ -108,7 +105,7 @@ while run:
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_ESCAPE]:
-        create_menu(text, difficulty)
+        create_menu()
 
     if changeable and keys[pygame.K_r]:
         if character.type() == "B":
@@ -142,6 +139,7 @@ while run:
             text = advanced()
         elif difficulty == 3:
             text = extreme_level()
+        counter = 0
         add_text(screen, text, TEXT_COLOR, X_TEXT_POS, Y_TEXT_POS)
     if not changeable:
         changeable = character.onGround(tiles)

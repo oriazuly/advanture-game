@@ -26,5 +26,5 @@ class Camera:
         y = 0
 
     def __view_text(screen, text, counter):
-        if counter < 75:
+        if counter < 100:
             Functions.add_text(screen, text, (0, 0, 0), 100, 75)

@@ -78,7 +78,7 @@ def generate_menu(screen, rows, cols):  # auto create normal menu
 def update_menu_colors(screen, rows, cols):  # auto create normal menu
     for row in range(rows):
         for col in range(cols):
-            if random.randint(0, 100) < 12:
+            if random.randint(0, 100) < CHANGE_CHANCE:
                 color = random_color_generator()
                 pygame.draw.rect(screen, color, pygame.Rect(MENU_TILE_SIZE * col, MENU_TILE_SIZE * row, MENU_TILE_SIZE, MENU_TILE_SIZE))
                 pygame.display.flip()
