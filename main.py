@@ -17,12 +17,12 @@ def beginner():
 
 
 def advanced():
-    create_shelves(15, tiles, 3, "R", 1, int(MAP_COLS // 2))
+    create_shelves(15, tiles, 4, "R", 1, int(MAP_COLS // 2))
     return "This is the advance level good luck my friend"
 
 
 def extreme_level():
-    create_shelves(10, tiles, 4, "R", 1, int(MAP_COLS // 2))
+    create_shelves(15, tiles, 3, "R", 1, int(MAP_COLS // 2))
     return "It's an Impossible level. are you insane?!"
 
 
@@ -37,18 +37,10 @@ write_map("map.txt", MAP_ROWS, MAP_COLS)
 map = read_map()
 tiles = generate_tiles(map)
 
-
 generate_menu(screen, MENU_COLS, MENU_ROWS)
-
-# create_desk(tiles, 3, MAP_ROWS - 12, "G", 10, FLOOR_HEIGHT)
-# create_chandeliers(30, 20, tiles, "M", "Y", 40, CELLING_HEIGHT)
-# create_low_chandelier(tiles, "M", "Y", 4, CELLING_HEIGHT)
-# create_border(tiles, 5, 5, "X", 4, FLOOR_HEIGHT)
-
 
 run = True
 clicked = False
-# screen.fill(random_color_generator())
 rects = initiate_menu(screen)
 
 while not clicked:  # Menu screen
@@ -124,9 +116,9 @@ while run:
             text = advanced()
         elif difficulty == 3:
             text = extreme_level()
+        add_text(screen, text, TEXT_COLOR, X_TEXT_POS, Y_TEXT_POS)
     if not changeable:
         changeable = character.onGround(tiles)
-
 
     Camera.update()
     screen.fill((0, 0, 0))  # Clear the screen, add another layout
