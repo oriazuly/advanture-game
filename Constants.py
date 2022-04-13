@@ -32,36 +32,24 @@ RECT_SPACE = 300
 RECT_AMOUNT = 3
 CHANGE_CHANCE = 15
 
+# Text:
 TEXT_COLOR = (0, 0, 0)
 TEXT_X_SPACE = 55
 TEXT_Y_SPACE = 85
 TEXT_SIZE = 25
-
-# Options:
-
-# Difficulty:
-difficulties = {1: "basic",
-                2: "advanced",
-                3: "extreme"}
-
 
 # Other:
 SCALE = 20
 SPEED = 1
 FPS = 13  # normal: 12
 
-# BasicCharacter:
+# Character:
 JUMP = 5  # normal: 6
 GRAVITY = 1
 X_POSITION = 1
 Y_POSITION = MAP_COLS - 20
-
 CHARACTER_HEIGHT = 20
 CHARACTER_WIDTH = 20
-
-# Dinosaur:
-DINOSAUR_X_POSITION = 5
-DINOSAUR_Y_POSITION = MAP_COLS - 15
 
 # Camera:
 CAMERA_X_START = ((SCREEN_WIDTH - 2) // SCALE) // 3

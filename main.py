@@ -8,7 +8,6 @@ from Characters.ReversedCharacter import *
 from Characters.Dinosaur import *
 from Furniture import *
 from Camera import *
-
 mixer.init()
 
 
@@ -42,7 +41,6 @@ screen_size = (SCREEN_WIDTH, SCREEN_HEIGHT)
 screen = pygame.display.set_mode(screen_size)
 pygame.display.set_caption("Adventure_game")
 pygame.display.flip()
-
 map = read_map()
 tiles = generate_tiles(map)
 
@@ -105,7 +103,6 @@ def create_options():
 
 
 rects, text, difficulty, run = create_menu()
-
 character_src = pygame.image.load("Characters/Character\\cube.png")  # / - Folder, \\ - File
 character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
 character = BasicCharacter(character_src, X_POSITION, Y_POSITION)
@@ -185,7 +182,5 @@ while finished:
     for event in pygame.event.get():  # close pygame
         if event.type == pygame.QUIT:
             finished = False
-
-
 
 pygame.quit()
