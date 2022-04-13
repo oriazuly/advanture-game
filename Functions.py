@@ -93,7 +93,9 @@ def draw_menu(tiles, screen):  # make the tiles list (based map) apper on the sc
 
 # Game progress:
 def next_level(difficulty):
-    difficulty += 1
+    if difficulty < 3:
+        difficulty += 1
+    return difficulty
 
 
 # Other:

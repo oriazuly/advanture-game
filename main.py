@@ -106,7 +106,11 @@ while run:
             changeable = False
 
     camera_end, jumping, jump_counter, falling = character.movement(map, tiles, camera_end, jumping, jump_counter, falling)
-    if isKilled(tiles, character.getX(), character.getY()):
+
+    if character.getX() == MAP_ROWS - 2:
+        difficulty = next_level(difficulty)
+
+    if isKilled(tiles, character.getX(), character.getY()) or character.getX() == MAP_ROWS - 2:
         kill_character(character)
         tiles = generate_tiles(map)
         draw_map(tiles, screen, (Camera.x, Camera.y))
@@ -114,9 +118,15 @@ while run:
         character_src = pygame.transform.scale(character_src, (CHARACTER_WIDTH, CHARACTER_HEIGHT))
         character = BasicCharacter(character_src, character.getX(), character.getY())
         changeable = True
-        beginner()
+        if difficulty == 1:
+            text = beginner()
+        elif difficulty == 2:
+            text = advanced()
+        elif difficulty == 3:
+            text = extreme_level()
     if not changeable:
         changeable = character.onGround(tiles)
+
 
     Camera.update()
     screen.fill((0, 0, 0))  # Clear the screen, add another layout

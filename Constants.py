@@ -6,7 +6,7 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 500
 
 # Map:
-MAP_ROWS = 100  # normal: 350, after change use write_map("map.txt", MAP_ROWS, MAP_COLS)
+MAP_ROWS = 50  # normal: 350, after change use write_map("map.txt", MAP_ROWS, MAP_COLS)
 MAP_COLS = 25  # normal: 25, after change use write_map("map.txt", MAP_ROWS, MAP_COLS)
 CELLING_HEIGHT = 1  # use as col
 FLOOR_HEIGHT = MAP_COLS - 2  # use as col
