@@ -86,7 +86,3 @@ BASIC_COLORS = {"B": pygame.image.load("Colors\\black.png"),
 COLLIDER_COLORS = {"X": pygame.image.load("Colors\\brick_wall.png")}
 
 OBSTACLE_COLORS = {"S": pygame.image.load("Colors\\spears.png")}
-
-
-def change_speed(speed):
-    SPEED = speed + SPEED
